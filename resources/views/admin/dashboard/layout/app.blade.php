@@ -265,8 +265,7 @@
                                                 alt="Image Description">
                                         </div>
                                         <div class="media-body">
-                                            <span
-                                                class="card-title h5">Admin</span>
+                                            <span class="card-title h5">Admin</span>
                                             <span
                                                 class="card-text">{{ mb_strimwidth(session('admin')[0]->username, 0, 20, '...') }}</span>
                                         </div>
@@ -321,8 +320,8 @@
                         </li>
 
                         <li class="nav-item ">
-                            <a class="js-nav-tooltip-link nav-link " href="{{ route('adminDashboard') }}" title="Layouts"
-                                data-placement="left">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('adminDashboard') }}"
+                                title="Layouts" data-placement="left">
                                 <i class="tio-home-vs-1-outlined nav-icon"></i>
                                 <span
                                     class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Dashboard</span>
@@ -333,17 +332,26 @@
                             <a class="js-nav-tooltip-link nav-link " href="{{ route('allUsers') }}" title="Layouts"
                                 data-placement="left">
                                 <i class="tio-home-vs-1-outlined nav-icon"></i>
-                                <span
-                                    class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">All Users</span>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">All
+                                    Users</span>
                             </a>
                         </li>
-                        
+
                         <li class="nav-item ">
-                            <a class="js-nav-tooltip-link nav-link " href="{{ route('allSupports') }}" title="Layouts"
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('addDevice') }}" title="Layouts"
                                 data-placement="left">
                                 <i class="tio-home-vs-1-outlined nav-icon"></i>
-                                <span
-                                    class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">All Supports</span>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Add
+                                    Device</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('allSupports') }}"
+                                title="Layouts" data-placement="left">
+                                <i class="tio-home-vs-1-outlined nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">All
+                                    Supports</span>
                             </a>
                         </li>
 
@@ -382,6 +390,7 @@
                 </div>
             </div>
             <!-- End Page Header -->
+            <x-alert />
             @yield('content')
         </div>
         <!-- End Content -->

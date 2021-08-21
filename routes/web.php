@@ -3,6 +3,7 @@
 use App\Http\Controllers\adminAuth;
 use App\Http\Controllers\adminDashboard;
 use App\Http\Controllers\dashboard;
+use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\profile;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\userAuth;
@@ -63,4 +64,9 @@ Route::prefix('admin/dashboard')->middleware(['admin'])->group(function () {
     Route::get('/index', [adminDashboard::class, 'index'])->name('adminDashboard');
     Route::get('/all-users', [adminDashboard::class, 'allUsers'])->name('allUsers');
     Route::get('/all-supports', [adminDashboard::class, 'allSupports'])->name('allSupports');
+    
+    
+    Route::get('/addDevice', [DeviceController::class, 'addDevice'])->name('addDevice');
+    Route::post('/addDevice', [DeviceController::class, 'addDeviceReq'])->name('addDeviceReq');
+    
 });
