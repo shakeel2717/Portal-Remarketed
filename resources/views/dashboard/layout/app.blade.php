@@ -55,8 +55,8 @@
                 <div class="navbar-nav-wrap">
                     <div class="navbar-brand-wrapper">
                         <!-- Logo -->
-                        <a class="navbar-brand" href="../index.html" aria-label="Front">
-                            <img class="navbar-brand-logo" src="../assets/svg/logos/logo-white.svg" alt="Logo">
+                        <a class="navbar-brand" href="{{ route('dashboard') }}" aria-label="Front">
+                            <img class="navbar-brand-logo" src="{{ asset('assets/svg/logos/logo-light.svg') }}" alt="Logo">
                         </a>
                         <!-- End Logo -->
                     </div>

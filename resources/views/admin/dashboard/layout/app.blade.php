@@ -217,7 +217,7 @@
                                 <div class="card-body card-body-height">
                                     <!-- Nav -->
                                     <div class="nav nav-pills flex-column">
-                                        <a class="nav-link" href="{{ route('addDevice') }}">
+                                        <a class="nav-link" href="#">
                                             <div class="media align-items-center">
                                                 <span class="avatar avatar-xs avatar-soft-dark mr-3">
                                                     <span class="avatar-initials"><i class="tio-apps"></i></span>
@@ -278,11 +278,6 @@
                                 <a class="dropdown-item" href="{{ route('profile') }}">
                                     <span class="text-truncate pr-2" title="Profile &amp; account">Profile &amp;
                                         account</span>
-                                </a>
-
-                                <a class="dropdown-item" href="{{ route('company') }}">
-                                    <span class="text-truncate pr-2" title="Profile &amp; account">
-                                        Business</span>
                                 </a>
 
                                 <a class="dropdown-item" href="{{ route('profile') }}">
@@ -380,7 +375,7 @@
                     </div>
 
                     <div class="col-sm-auto">
-                        <a class="btn btn-primary" href="{{ route('addDevice') }}">
+                        <a class="btn btn-primary" href="#">
                             <i class="tio-add mr-1"></i> Add Device
                         </a>
                     </div>

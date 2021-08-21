@@ -53,7 +53,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
 
 
 Route::prefix('admin')->group(function () {
-    Route::get('/authenticate/login', [adminAuth::class, 'login'])->name('adminLogin');
+    Route::get('/authenticate/login', [adminAuth::class, 'login'])->name('adminlogin');
     Route::post('/authenticate/login', [adminAuth::class, 'loginReq'])->name('adminLoginReq');
 });
 
