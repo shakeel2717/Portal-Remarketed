@@ -24,6 +24,9 @@ class CreateDevicesTable extends Migration
             $table->string('additionalInfo')->nullable();
             $table->string('qty');
             $table->string('price');
+            $table->foreignId('user_id')
+                ->constrained()
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
