@@ -346,6 +346,39 @@
                             </a>
                         </li>
 
+
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('addFunctionality') }}"
+                                title="Layouts" data-placement="left">
+                                <i class="tio-home-vs-1-outlined nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Add
+                                    Functionality</span>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('addColors') }}" title="Layouts"
+                                data-placement="left">
+                                <i class="tio-home-vs-1-outlined nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Add
+                                    Colors</span>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('addBoxes') }}" title="Layouts"
+                                data-placement="left">
+                                <i class="tio-home-vs-1-outlined nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Add
+                                    Boxes</span>
+                            </a>
+                        </li>
+
+
+
+
                         <li class="nav-item ">
                             <a class="js-nav-tooltip-link nav-link " href="{{ route('allSupports') }}"
                                 title="Layouts" data-placement="left">

@@ -38,4 +38,10 @@ class DeviceController extends Controller
         $task->save();
         return redirect()->back()->with('message','New Device Added into System Successfully');
     }
+
+
+    
+
+
+    
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\adminAuth;
 use App\Http\Controllers\adminDashboard;
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\FunctionalityController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\profile;
 use App\Http\Controllers\SupportController;
@@ -74,4 +75,15 @@ Route::prefix('admin/dashboard')->middleware(['admin'])->group(function () {
 
     Route::get('/addDevice', [DeviceController::class, 'addDevice'])->name('addDevice');
     Route::post('/addDevice', [DeviceController::class, 'addDeviceReq'])->name('addDeviceReq');
+
+    Route::get('/addFunctionality', [FunctionalityController::class, 'addFunctionality'])->name('addFunctionality');
+    Route::post('/addFunctionality', [FunctionalityController::class, 'addFunctionalityReq'])->name('addFunctionalityReq');
+
+    Route::get('/addColors', [FunctionalityController::class, 'addColors'])->name('addColors');
+    Route::post('/addColors', [FunctionalityController::class, 'addColorsReq'])->name('addColorsReq');
+
+    Route::get('/addBoxes', [FunctionalityController::class, 'addBoxes'])->name('addBoxes');
+    Route::post('/addBoxes', [FunctionalityController::class, 'addBoxesReq'])->name('addBoxesReq');
+
+    
 });
