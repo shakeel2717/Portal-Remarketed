@@ -10,7 +10,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            @forelse ($allDevices as $device)
+            @forelse ($allDevices[0]->device as $device)
                 <div class="col mb-3">
                     <div class="card card-body">
                         <div class="media align-items-md-center">
@@ -18,11 +18,11 @@
                                 <div class="row align-items-md-center">
                                     <div class="col-9 col-md-4 col-lg-3 mb-2 mb-md-0">
                                         <h4 class="mb-1">
-                                            <a class="text-dark" href="#">Dell Xr3k</a>
+                                            <a class="text-dark" href="#">{{ $device->name }}</a>
                                         </h4>
                                         <span class="d-block">
                                             <i class="tio-company mr-1"></i>
-                                            <span>Dell</span>
+                                            <span>{{ $device->brand }}</span>
                                         </span>
                                     </div>
                                     <div class="col-sm mb-2 mb-sm-0">
@@ -31,7 +31,7 @@
                                         </h4>
                                         <span class="d-block">
                                             <i class="tio-company mr-1"></i>
-                                            <span>Grade A</span>
+                                            <span>{{ $device->appearance }}</span>
                                         </span>
                                     </div>
                                     <div class="col-sm mb-2 mb-sm-0">
@@ -40,7 +40,7 @@
                                         </h4>
                                         <span class="d-block">
                                             <i class="tio-company mr-1"></i>
-                                            <span>Working</span>
+                                            <span>{{ $device->functionality }}</span>
                                         </span>
                                     </div>
                                     <div class="col-sm mb-2 mb-sm-0">
@@ -49,7 +49,7 @@
                                         </h4>
                                         <span class="d-block">
                                             <i class="tio-company mr-1"></i>
-                                            <span>Original Box</span>
+                                            <span>{{ $device->boxed }}</span>
                                         </span>
                                     </div>
                                     <div class="col-sm mb-2 mb-sm-0">
@@ -58,7 +58,7 @@
                                         </h4>
                                         <span class="d-block">
                                             <i class="tio-company mr-1"></i>
-                                            <span>Red</span>
+                                            <span>{{ $device->color }}</span>
                                         </span>
                                     </div>
                                     <div class="col-sm-auto">

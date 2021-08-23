@@ -23,7 +23,7 @@ class DeviceFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => 1,
+            'users_id' => rand(1,2),
             'brand' => Str::random(3),
             'name' => Str::random(5),
             'appearance' => Str::random(10),

@@ -42,6 +42,15 @@ class createUser extends Command
             'status' => 'Active',
         ]);
 
+        users::create([
+            'fname' => 'Basharat',
+            'lname' => 'Ali',
+            'username' => 'basharat',
+            'email' => 'basharat604@gmail.com',
+            'password' => 'asdfasdf',
+            'status' => 'Active',
+        ]);
+
 
 
         admin::create([
