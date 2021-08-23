@@ -4,6 +4,7 @@ use App\Http\Controllers\adminAuth;
 use App\Http\Controllers\adminDashboard;
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\profile;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\userAuth;
@@ -50,6 +51,8 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('/profile', [profile::class, 'index'])->name('profile');
     Route::post('/profile', [profile::class, 'profileReq'])->name('profileReq');
     Route::post('/changePasswordReq', [profile::class, 'changePasswordReq'])->name('changePasswordReq');
+
+    Route::post('/orderReq',[OrderController::class,'orderReq'])->name('orderReq');
 });
 
 

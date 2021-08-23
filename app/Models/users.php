@@ -25,4 +25,9 @@ class users extends Model
     {
         return $this->hasMany(device::class);
     }
+
+    public function order()
+    {
+        return $this->hasMany(order::class);
+    }
 }

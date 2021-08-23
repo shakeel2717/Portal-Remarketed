@@ -52,7 +52,9 @@
                                     </span>
                                 </div>
                                 <div class="col-sm-auto">
-                                    <a class="btn btn-primary">Add Draft</a>
+                                    <button class="btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModalTopCover{{ $loop->iteration }}">Add Draft</button>
+                                    <x-addOrderDraft :loop="$loop" :device="$device" />
                                 </div>
                             </div>
                         </div>
