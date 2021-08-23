@@ -41,17 +41,17 @@ class OrderController extends Controller
     public function orderExistingReq(Request $request)
     {
         $validated = $request->validate([
-            'orderId' => 'required|string|min:3',
+            'orderId' => 'required|integer',
             'device_id' => 'required|integer',
         ]);
 
-        // inserting into database
-        // $task = order::findOrFail($validated['orderId']);
-        // $task->name = $validated['orderName'];
-        // $task->users_id = session('user')[0]->id;
-        // $task->devices_id = $validated['device_id'];
-        // $task->orderNumber = Str::random(3);
-        // $task->save();
-        return redirect()->back()->with('message', 'Order Created Successfully');
+        // inserting Item Order
+        $task = new itemOrder();
+        $task->users_id = session('user')[0]->id;
+        $task->devices_id = $validated['device_id'];
+        $task->orders_id = $validated['orderId'];
+        $task->status = "Draft";
+        $task->save();
+        return redirect()->back()->with('message', 'Order Created in Existing Order Successfully');
     }
 }
