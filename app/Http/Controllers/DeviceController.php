@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\boxed;
+use App\Models\color;
 use App\Models\device;
+use App\Models\functionality;
 use Illuminate\Http\Request;
 
 class DeviceController extends Controller
 {
     public function addDevice()
     {
-        return view("admin.dashboard.addDevice");
+        return view("admin.dashboard.addDevice",[
+            'colors' => color::get(),
+            'functionalities' => functionality::get(),
+            'boxes' => boxed::get(),
+        ]);
     }
 
     public function addDeviceReq(Request $request)
@@ -26,6 +33,8 @@ class DeviceController extends Controller
             'price' => 'required',
         ]);
         $task = new device();
+
+        $task->users_id = session('user')[0]->id;
         $task->brand = $validated['brand'];
         $task->name = $validated['name'];
         $task->appearance = $validated['appearance'];

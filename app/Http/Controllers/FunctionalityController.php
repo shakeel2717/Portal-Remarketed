@@ -20,7 +20,7 @@ class FunctionalityController extends Controller
     public function addFunctionalityReq(Request $request)
     {
         $validated = $request->validate([
-            'functionality' => 'required|unique:functionalities,value'
+            'functionality' => 'required'
         ]);
 
         // inserting into database
@@ -43,7 +43,7 @@ class FunctionalityController extends Controller
     public function addColorsReq(Request $request)
     {
         $validated = $request->validate([
-            'color' => 'required|unique:colors,value'
+            'color' => 'required'
         ]);
 
         // inserting into database
@@ -65,7 +65,7 @@ class FunctionalityController extends Controller
     public function addBoxesReq(Request $request)
     {
         $validated = $request->validate([
-            'boxes' => 'required|unique:Boxeds,value'
+            'boxes' => 'required'
         ]);
 
         // inserting into database

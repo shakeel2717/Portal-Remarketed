@@ -11,7 +11,8 @@
                 </div>
                 <div class="card-body text-center">
                     <h2>Add a New Device into system</h2>
-                    <img class="mb-3" src="{{ asset('assets/svg/illustrations/click.svg') }}" alt="Add Device" width="150">
+                    <img class="mb-3" src="{{ asset('assets/svg/illustrations/click.svg') }}" alt="Add Device"
+                        width="150">
                     <form action="{{ route('addDeviceReq') }}" method="POST">
                         @csrf
                         <div class="row">
@@ -40,15 +41,30 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="color">Device Color</label>
-                                    <input type="text" name="color" id="color" class="form-control"
-                                        placeholder="Type Color of Device">
+                                    <label for="qty">Device Color</label>
+                                    <select class="js-select2-custom custom-select" name="color" id="color" size="1"
+                                        style="opacity: 0;">
+                                        @forelse ($colors as $color)
+                                            <option value="{{ $color->value }}">{{ $color->value }}
+                                            </option>
+                                        @empty
+                                            <option value="">No Record Found</option>
+                                        @endforelse
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="boxed">Boxed</label>
-                                    <input type="text" name="boxed" id="boxed" class="form-control" placeholder="Boxed">
+                                    <label for="qty">Boxed</label>
+                                    <select class="js-select2-custom custom-select" name="boxed" id="boxed" size="1"
+                                        style="opacity: 0;">
+                                        @forelse ($boxes as $box)
+                                            <option value="{{ $box->value }}">{{ $box->value }}
+                                            </option>
+                                        @empty
+                                            <option value="">No Record Found</option>
+                                        @endforelse
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -61,8 +77,15 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="qty">Functionality</label>
-                                    <input type="text" name="functionality" id="functionality" class="form-control"
-                                        placeholder="Type Functionality of Device">
+                                    <select class="js-select2-custom custom-select" name="functionality" id="functionality"
+                                        size="1" style="opacity: 0;">
+                                        @forelse ($functionalities as $functionality)
+                                            <option value="{{ $functionality->value }}">{{ $functionality->value }}
+                                            </option>
+                                        @empty
+                                            <option value="">No Record Found</option>
+                                        @endforelse
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
