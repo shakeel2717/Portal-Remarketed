@@ -15,6 +15,7 @@ class CreateBoxedsTable extends Migration
     {
         Schema::create('boxeds', function (Blueprint $table) {
             $table->id();
+            $table->string('value');
             $table->timestamps();
         });
     }

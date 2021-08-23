@@ -16,4 +16,10 @@ class device extends Model
     {
         return $this->belongsTo(users::class);
     }
+
+
+    public function itemOrder()
+    {
+        return $this->belongsTo(itemOrder::class);
+    }
 }

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\device;
 use App\Models\itemOrder;
 use App\Models\order;
+use App\Models\users;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -53,5 +56,17 @@ class OrderController extends Controller
         $task->status = "Draft";
         $task->save();
         return redirect()->back()->with('message', 'Order Created in Existing Order Successfully');
+    }
+
+    public function draftsOrders()
+    {
+        $query = DB::table('item_orders')
+            ->join('devices', 'devices.id', '=', 'devices_id')
+            ->select('devices.*', 'item_orders.*')
+            ->get();
+        // return $query;
+        return view('dashboard.orders.draft', [
+            'allDevices' => $query,
+        ]);
     }
 }

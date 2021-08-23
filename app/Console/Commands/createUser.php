@@ -54,8 +54,8 @@ class createUser extends Command
 
 
         admin::create([
-            'username' => 'shakeel2717',
-            'password' => 'asdfasdf',
+            'username' => 'test',
+            'password' => 'test',
         ]);
 
         

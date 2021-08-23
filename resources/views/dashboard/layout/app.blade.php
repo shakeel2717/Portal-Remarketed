@@ -333,7 +333,7 @@
                     </div>
 
                     <div class="col-sm-auto">
-                        <a href="#" class="btn btn-primary">Check Orders</a>
+                        <a href="{{ route('draftsOrders') }}" class="btn btn-primary">Check Orders</a>
                     </div>
                 </div>
             </div>

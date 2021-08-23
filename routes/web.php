@@ -54,6 +54,8 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
 
     Route::post('/orderReq', [OrderController::class, 'orderReq'])->name('orderReq');
     Route::post('/orderExistingReq', [OrderController::class, 'orderExistingReq'])->name('orderExistingReq');
+
+    Route::get('/orders/drafts', [OrderController::class, 'draftsOrders'])->name('draftsOrders');
 });
 
 
