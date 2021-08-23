@@ -52,7 +52,8 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::post('/profile', [profile::class, 'profileReq'])->name('profileReq');
     Route::post('/changePasswordReq', [profile::class, 'changePasswordReq'])->name('changePasswordReq');
 
-    Route::post('/orderReq',[OrderController::class,'orderReq'])->name('orderReq');
+    Route::post('/orderReq', [OrderController::class, 'orderReq'])->name('orderReq');
+    Route::post('/orderExistingReq', [OrderController::class, 'orderExistingReq'])->name('orderExistingReq');
 });
 
 
@@ -67,9 +68,8 @@ Route::prefix('admin/dashboard')->middleware(['admin'])->group(function () {
     Route::get('/index', [adminDashboard::class, 'index'])->name('adminDashboard');
     Route::get('/all-users', [adminDashboard::class, 'allUsers'])->name('allUsers');
     Route::get('/all-supports', [adminDashboard::class, 'allSupports'])->name('allSupports');
-    
-    
+
+
     Route::get('/addDevice', [DeviceController::class, 'addDevice'])->name('addDevice');
     Route::post('/addDevice', [DeviceController::class, 'addDeviceReq'])->name('addDeviceReq');
-    
 });

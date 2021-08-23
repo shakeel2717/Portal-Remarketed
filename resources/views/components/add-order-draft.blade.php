@@ -53,12 +53,12 @@
                           aria-labelledby="nav-one-eg1-tab">
                           <div class="row">
                               <div class="col-md-12">
-                                  <form action="{{ route('orderReq') }}" method="POST">
+                                  <form action="{{ route('orderExistingReq') }}" method="POST">
                                       @csrf
                                       <div class="form-group">
                                           <label for="orderName">Select Order Name</label>
                                           <!-- Select2 -->
-                                          <select class="js-select2-custom custom-select"> size="1" style="opacity: 0;"
+                                          <select class="js-select2-custom custom-select" name="orderId"> size="1" style="opacity: 0;"
                                               @forelse ($orders as $order)
                                                   <option value="{{ $order->id }}">{{ $order->name }}</option>
                                               @empty
