@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12">
-        @forelse ($allDevices[0]->device as $device)
+        @forelse ($allDevices as $device)
             <div class="col mb-3">
                 <div class="card card-body">
                     <div class="media align-items-md-center">
@@ -54,7 +54,7 @@
                                 <div class="col-sm-auto">
                                     <button class="btn btn-primary" data-toggle="modal"
                                         data-target="#exampleModalTopCover{{ $loop->iteration }}">Add Draft</button>
-                                    <x-addOrderDraft :loop="$loop" :device="$device" :orders="$allDevices[0]->order" />
+                                    <x-addOrderDraft :loop="$loop" :device="$device" :orders="$orders" />
                                 </div>
                             </div>
                         </div>

@@ -2,11 +2,14 @@
 
 namespace App\View\Components;
 
+use App\Models\order;
 use Illuminate\View\Component;
 
 class allDevices extends Component
 {
     public $allDevices;
+    public $orders;
+
     /**
      * Create a new component instance.
      *
@@ -15,6 +18,8 @@ class allDevices extends Component
     public function __construct($allDevices)
     {
         $this->allDevices = $allDevices;
+        $orders = order::get();
+        $this->orders = $orders;
     }
 
     /**

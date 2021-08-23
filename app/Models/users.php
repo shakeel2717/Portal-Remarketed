@@ -21,11 +21,6 @@ class users extends Model
 
 
 
-    public function device()
-    {
-        return $this->hasMany(device::class);
-    }
-
     public function order()
     {
         return $this->hasMany(order::class);

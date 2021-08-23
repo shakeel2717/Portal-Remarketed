@@ -34,7 +34,6 @@ class DeviceController extends Controller
         ]);
         $task = new device();
 
-        $task->users_id = session('user')[0]->id;
         $task->brand = $validated['brand'];
         $task->name = $validated['name'];
         $task->appearance = $validated['appearance'];
