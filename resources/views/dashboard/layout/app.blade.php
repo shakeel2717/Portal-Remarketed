@@ -333,21 +333,11 @@
                     </div>
 
                     <div class="col-sm-auto">
-                        <!-- Dropdown -->
-                        <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Add New RMA
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="">RMA for Supplier</a>
-                                <a class="dropdown-item" href="">RMA for Customer</a>
-                            </div>
-                        </div>
-                        <!-- End Dropdown -->
+                        <a href="#" class="btn btn-primary">Check Orders</a>
                     </div>
                 </div>
             </div>
+            <x-alert />
             <!-- End Page Header -->
             @yield('content')
         </div>
