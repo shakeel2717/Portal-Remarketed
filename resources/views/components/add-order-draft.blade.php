@@ -31,21 +31,73 @@
               </div>
 
               <div class="modal-body">
-                  <div class="row">
-                      <div class="col-md-12">
-                          <form action="{{ route('orderReq') }}" method="POST">
-                              @csrf
-                              <div class="form-group">
-                                  <label for="orderName">Order Name</label>
-                                  <input type="text" name="orderName" id="orderName" class="form-control" placeholder="Order Name">
-                                  <input type="hidden" name="device_id" id="device_id" value="{{ $device->id }}">
+                  <!-- Nav -->
+                  <div class="text-center">
+                      <ul class="nav nav-segment nav-pills mb-7" role="tablist">
+                          <li class="nav-item">
+                              <a class="nav-link active" id="nav-one-eg1-tab" data-toggle="pill" href="#nav-one-eg1"
+                                  role="tab" aria-controls="nav-one-eg1" aria-selected="true">Existing order</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" id="nav-two-eg1-tab" data-toggle="pill" href="#nav-two-eg1" role="tab"
+                                  aria-controls="nav-two-eg1" aria-selected="false">New order</a>
+                          </li>
+
+                      </ul>
+                  </div>
+                  <!-- End Nav -->
+
+                  <!-- Tab Content -->
+                  <div class="tab-content">
+                      <div class="tab-pane fade show active" id="nav-one-eg1" role="tabpanel"
+                          aria-labelledby="nav-one-eg1-tab">
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <form action="{{ route('orderReq') }}" method="POST">
+                                      @csrf
+                                      <div class="form-group">
+                                          <label for="orderName">Select Order Name</label>
+                                          <!-- Select2 -->
+                                          <select class="js-select2-custom custom-select"> size="1" style="opacity: 0;"
+                                              @forelse ($orders as $order)
+                                                  <option value="{{ $order->id }}">{{ $order->name }}</option>
+                                              @empty
+                                                  <option value="">No Existing Order</option>
+                                              @endforelse
+                                          </select>
+                                          <!-- End Select2 -->
+                                          <input type="hidden" name="device_id" id="device_id"
+                                              value="{{ $device->id }}">
+                                      </div>
+                                      <div class="form-group">
+                                          <input type="submit" class="btn btn-primary btn-block" value="Submit">
+                                      </div>
+                                  </form>
                               </div>
-                              <div class="form-group">
-                                <input type="submit" class="btn btn-primary btn-block" value="Submit">
-                            </div>
-                          </form>
+                          </div>
+                      </div>
+
+                      <div class="tab-pane fade" id="nav-two-eg1" role="tabpanel" aria-labelledby="nav-two-eg1-tab">
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <form action="{{ route('orderReq') }}" method="POST">
+                                      @csrf
+                                      <div class="form-group">
+                                          <label for="orderName">Order Name</label>
+                                          <input type="text" name="orderName" id="orderName" class="form-control"
+                                              placeholder="Order Name">
+                                          <input type="hidden" name="device_id" id="device_id"
+                                              value="{{ $device->id }}">
+                                      </div>
+                                      <div class="form-group">
+                                          <input type="submit" class="btn btn-primary btn-block" value="Submit">
+                                      </div>
+                                  </form>
+                              </div>
+                          </div>
                       </div>
                   </div>
+                  <!-- End Tab Content -->
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>

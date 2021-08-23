@@ -54,7 +54,7 @@
                                 <div class="col-sm-auto">
                                     <button class="btn btn-primary" data-toggle="modal"
                                         data-target="#exampleModalTopCover{{ $loop->iteration }}">Add Draft</button>
-                                    <x-addOrderDraft :loop="$loop" :device="$device" />
+                                    <x-addOrderDraft :loop="$loop" :device="$device" :orders="$allDevices[0]->order" />
                                 </div>
                             </div>
                         </div>

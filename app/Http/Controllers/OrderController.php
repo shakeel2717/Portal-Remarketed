@@ -17,10 +17,11 @@ class OrderController extends Controller
 
         // inserting into database
         $task = new order();
+        $task->name = $validated['orderName'];
         $task->users_id = session('user')[0]->id;
         $task->devices_id = $validated['device_id'];
         $task->orderNumber = Str::random(3);
         $task->save();
-        return redirect()->back()->with('message','Order Created Successfully');
+        return redirect()->back()->with('message', 'Order Created Successfully');
     }
 }

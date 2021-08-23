@@ -8,15 +8,17 @@ class addOrderDraft extends Component
 {
     public $loop;
     public $device;
+    public $orders;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($loop,$device)
+    public function __construct($loop,$device,$orders)
     {
         $this->loop = $loop;
         $this->device = $device;
+        $this->orders = $orders;
     }
 
     /**
