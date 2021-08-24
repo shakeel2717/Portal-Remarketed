@@ -12,9 +12,9 @@ class dashboard extends Controller
 {
     public function index()
     {
-        $query = device::get();
+        $allDevices = device::get();
         return view('dashboard.index', [
-            'allDevices' => $query,
+            'allDevices' => $allDevices,
             'orders' => order::get(),
         ]);
     }

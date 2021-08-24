@@ -48,6 +48,9 @@ Route::get('/password-changed', [userAuth::class, 'passwordChanged'])->name('pas
 
 Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('/index', [dashboard::class, 'index'])->name('dashboard');
+    Route::get('/devices/working', [DeviceController::class, 'devicesWorking'])->name('devicesWorking');
+    Route::get('/devices/refurbishing', [DeviceController::class, 'devicesRefurbishing'])->name('devicesRefurbishing');
+    Route::get('/devices/motherboard', [DeviceController::class, 'devicesmotherboard'])->name('devicesmotherboard');
     Route::resource('support', SupportController::class);
     Route::get('/profile', [profile::class, 'index'])->name('profile');
     Route::post('/profile', [profile::class, 'profileReq'])->name('profileReq');
@@ -85,6 +88,4 @@ Route::prefix('admin/dashboard')->middleware(['admin'])->group(function () {
 
     Route::get('/addBoxes', [FunctionalityController::class, 'addBoxes'])->name('addBoxes');
     Route::post('/addBoxes', [FunctionalityController::class, 'addBoxesReq'])->name('addBoxesReq');
-
-    
 });

@@ -26,8 +26,8 @@ class DeviceFactory extends Factory
         return [
             'brand' => Arr::random(["Apple", "Acer", "Dell", "Samsung", "Lenovo"]),
             'name' => Arr::random(["IPod", "Laptop", "Mobile", "LCD", "Watch"]),
-            'appearance' => Arr::random(["Grade A", "Grade B", "Grade C"]),
-            'functionality' => Arr::random(["Working", "Not Working", "Damaged"]),
+            'appearance' => Arr::random(["Grade A", "Grade B", "Grade C", "Motherboard"]),
+            'functionality' => Arr::random(["Working", "Minor Fault"]),
             'color' => Arr::random(["Red", "White", "Blue"]),
             'boxed' => Arr::random(["Original Box", "Unboxed", "UK Boxed"]),
             'additionalInfo' => Str::random(45),

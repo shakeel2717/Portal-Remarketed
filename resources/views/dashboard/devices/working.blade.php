@@ -4,5 +4,6 @@
 @endsection
 @section('content')
     <x-device-nav />
-    <x-all-devices :allDevices="$allDevices" :orders="$orders" />
+    <x-all-devices :allDevices="$workingDevices" :orders="$orders" />
+
 @endsection
