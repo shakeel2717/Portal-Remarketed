@@ -73,4 +73,12 @@ class OrderController extends Controller
             'orderDetail' => $query,
         ]);
     }
+
+
+    public function OrdersDestory($id)
+    {
+        $task = order::find($id);
+        $task->delete();
+        return redirect()->back()->with('message', 'Order Removed Successfully');
+    }
 }

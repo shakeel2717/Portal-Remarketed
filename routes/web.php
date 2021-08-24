@@ -57,6 +57,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::post('/orderExistingReq', [OrderController::class, 'orderExistingReq'])->name('orderExistingReq');
 
     Route::get('/orders/drafts', [OrderController::class, 'draftsOrders'])->name('draftsOrders');
+    Route::get('/orders/drafts/destory/{id}', [OrderController::class, 'OrdersDestory'])->name('OrdersDestory');
 });
 
 

@@ -56,7 +56,7 @@
                                     </h4>
                                 </div>
                                 <div class="col-sm-auto">
-                                    <a href="#" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('OrdersDestory',['id' => $detail->id ]) }}" class="btn btn-danger">Delete</a>
                                 </div>
                             </div>
                         </div>
