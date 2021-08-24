@@ -35,12 +35,12 @@
                   <div class="text-center">
                       <ul class="nav nav-segment nav-pills mb-7" role="tablist">
                           <li class="nav-item">
-                              <a class="nav-link active" id="nav-one-eg1-tab" data-toggle="pill" href="#nav-one-eg1"
-                                  role="tab" aria-controls="nav-one-eg1" aria-selected="true">Existing order</a>
+                              <a class="nav-link active" id="nav-one-eg1{{ $loop->iteration }}-tab" data-toggle="pill" href="#nav-one-eg1{{ $loop->iteration }}"
+                                  role="tab" aria-controls="nav-one-eg1{{ $loop->iteration }}" aria-selected="true">Existing order</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" id="nav-two-eg1-tab" data-toggle="pill" href="#nav-two-eg1" role="tab"
-                                  aria-controls="nav-two-eg1" aria-selected="false">New order</a>
+                              <a class="nav-link" id="nav-two-eg1{{ $loop->iteration }}1-tab" data-toggle="pill" href="#nav-two-eg1{{ $loop->iteration }}1" role="tab"
+                                  aria-controls="nav-two-eg1{{ $loop->iteration }}1" aria-selected="false">New order</a>
                           </li>
 
                       </ul>
@@ -49,8 +49,8 @@
 
                   <!-- Tab Content -->
                   <div class="tab-content">
-                      <div class="tab-pane fade show active" id="nav-one-eg1" role="tabpanel"
-                          aria-labelledby="nav-one-eg1-tab">
+                      <div class="tab-pane fade show active" id="nav-one-eg1{{ $loop->iteration }}" role="tabpanel"
+                          aria-labelledby="nav-one-eg1{{ $loop->iteration }}-tab">
                           <div class="row">
                               <div class="col-md-12">
                                   <form action="{{ route('orderExistingReq') }}" method="POST">
@@ -77,7 +77,7 @@
                           </div>
                       </div>
 
-                      <div class="tab-pane fade" id="nav-two-eg1" role="tabpanel" aria-labelledby="nav-two-eg1-tab">
+                      <div class="tab-pane fade" id="nav-two-eg1{{ $loop->iteration }}1" role="tabpanel" aria-labelledby="nav-two-eg1{{ $loop->iteration }}1-tab">
                           <div class="row">
                               <div class="col-md-12">
                                   <form action="{{ route('orderReq') }}" method="POST">
@@ -101,7 +101,6 @@
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
               </div>
           </div>
       </div>

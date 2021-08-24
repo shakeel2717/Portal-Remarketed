@@ -32,7 +32,7 @@ class OrderController extends Controller
         $task = new itemOrder();
         $task->users_id = session('user')[0]->id;
         $task->devices_id = $validated['device_id'];
-        $task->orders_id = $orderId;
+        $task->order_id = $orderId;
         $task->status = "Draft";
         $task->save();
 
@@ -52,7 +52,7 @@ class OrderController extends Controller
         $task = new itemOrder();
         $task->users_id = session('user')[0]->id;
         $task->devices_id = $validated['device_id'];
-        $task->orders_id = $validated['orderId'];
+        $task->order_id = $validated['orderId'];
         $task->status = "Draft";
         $task->save();
         return redirect()->back()->with('message', 'Order Created in Existing Order Successfully');
@@ -60,13 +60,17 @@ class OrderController extends Controller
 
     public function draftsOrders()
     {
-        $query = DB::table('item_orders')
-            ->join('devices', 'devices.id', '=', 'devices_id')
-            ->select('devices.*', 'item_orders.*')
-            ->get();
+        // $query = DB::table('item_orders')
+        //     ->join('devices', 'devices.id', '=', 'devices_id')
+        //     ->select('devices.*', 'item_orders.*')
+        //     ->get();
         // return $query;
+        // $query = DB::table('item_orders')
+        //     ->join('orders', 'orders.orders_id', '=', 'item_orders.id')
+        //     ->get();
+        $query = order::get();
         return view('dashboard.orders.draft', [
-            'allDevices' => $query,
+            'orderDetail' => $query,
         ]);
     }
 }

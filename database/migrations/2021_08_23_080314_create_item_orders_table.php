@@ -17,7 +17,7 @@ class CreateItemOrdersTable extends Migration
             $table->id();
             $table->unsignedInteger('users_id');
             $table->unsignedInteger('devices_id');
-            $table->unsignedInteger('orders_id');
+            $table->unsignedInteger('order_id');
             $table->string('status');
             $table->timestamps();
         });

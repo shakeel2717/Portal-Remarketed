@@ -14,4 +14,13 @@ class order extends Model
     {
         return $this->belongsTo(users::class);
     }
+
+    // public function itemOrder()
+    // {
+    //     return $this->belongsTo(itemOrder::class);
+    // }
+    public function itemOrder()
+    {
+        return $this->hasMany(itemOrder::class);
+    }
 }
