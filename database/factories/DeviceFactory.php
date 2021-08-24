@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\device;
 use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DeviceFactory extends Factory
@@ -23,15 +24,15 @@ class DeviceFactory extends Factory
     public function definition()
     {
         return [
-            'brand' => Str::random(3),
-            'name' => Str::random(5),
-            'appearance' => Str::random(10),
-            'functionality' => Str::random(10),
-            'color' => Str::random(10),
-            'boxed' => Str::random(10),
-            'additionalInfo' => Str::random(10),
-            'qty' => Str::random(10),
-            'price' => Str::random(10),
+            'brand' => Arr::random(["Apple", "Acer", "Dell", "Samsung", "Lenovo"]),
+            'name' => Arr::random(["IPod", "Laptop", "Mobile", "LCD", "Watch"]),
+            'appearance' => Arr::random(["Grade A", "Grade B", "Grade C"]),
+            'functionality' => Arr::random(["Working", "Not Working", "Damaged"]),
+            'color' => Arr::random(["Red", "White", "Blue"]),
+            'boxed' => Arr::random(["Original Box", "Unboxed", "UK Boxed"]),
+            'additionalInfo' => Str::random(45),
+            'qty' => Arr::random([1, 2, 3, 4, 5]),
+            'price' => Arr::random([10, 200, 300, 400, 500]),
         ];
     }
 }
