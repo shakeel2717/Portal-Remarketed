@@ -64,7 +64,7 @@ class DeviceController extends Controller
 
     public function devicesRefurbishing()
     {
-        $refurbishingDevice = device::where('functionality','Minor Fault')->get();
+        $refurbishingDevice = device::where('functionality', 'Minor Fault')->get();
         return view('dashboard.devices.refurbishing', [
             'refurbishingDevices' => $refurbishingDevice,
             'orders' => order::get(),
@@ -74,9 +74,19 @@ class DeviceController extends Controller
 
     public function devicesmotherboard()
     {
-        $motherboardDevices = device::where('appearance','Motherboard')->get();
+        $motherboardDevices = device::where('appearance', 'Motherboard')->get();
         return view('dashboard.devices.motherboard', [
             'motherboardDevices' => $motherboardDevices,
+            'orders' => order::get(),
+        ]);
+    }
+
+
+    public function devicesnew()
+    {
+        $newDevices = device::where('boxed', 'Original Box')->orWhere('boxed', 'UK Boxed')->get();
+        return view('dashboard.devices.new', [
+            'newDevices' => $newDevices,
             'orders' => order::get(),
         ]);
     }

@@ -13,6 +13,9 @@
         <li class="nav-item">
             <a class="nav-link {{ (Illuminate\Support\Facades\Route::currentRouteName() == "devicesmotherboard") ? "active" : "" }}" href="{{ route('devicesmotherboard') }}">Refurbishing</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link {{ (Illuminate\Support\Facades\Route::currentRouteName() == "devicesnew") ? "active" : "" }}" href="{{ route('devicesnew') }}">Brand new Product</a>
+        </li>
     </ul>
 </div>
 <!-- End Nav -->

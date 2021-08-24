@@ -51,6 +51,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('/devices/working', [DeviceController::class, 'devicesWorking'])->name('devicesWorking');
     Route::get('/devices/refurbishing', [DeviceController::class, 'devicesRefurbishing'])->name('devicesRefurbishing');
     Route::get('/devices/motherboard', [DeviceController::class, 'devicesmotherboard'])->name('devicesmotherboard');
+    Route::get('/devices/new', [DeviceController::class, 'devicesnew'])->name('devicesnew');
     Route::resource('support', SupportController::class);
     Route::get('/profile', [profile::class, 'index'])->name('profile');
     Route::post('/profile', [profile::class, 'profileReq'])->name('profileReq');
