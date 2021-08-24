@@ -15,6 +15,7 @@ class dashboard extends Controller
         $query = device::get();
         return view('dashboard.index', [
             'allDevices' => $query,
+            'orders' => order::get(),
         ]);
     }
 }

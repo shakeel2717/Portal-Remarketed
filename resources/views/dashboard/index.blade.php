@@ -3,5 +3,5 @@
     Dashboard
 @endsection
 @section('content')
-    <x-all-devices :allDevices="$allDevices"/>
+    <x-all-devices :allDevices="$allDevices" :orders="$orders"/>
 @endsection

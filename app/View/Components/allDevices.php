@@ -2,7 +2,6 @@
 
 namespace App\View\Components;
 
-use App\Models\order;
 use Illuminate\View\Component;
 
 class allDevices extends Component
@@ -18,7 +17,6 @@ class allDevices extends Component
     public function __construct($allDevices,$orders)
     {
         $this->allDevices = $allDevices;
-        $orders = order::get();
         $this->orders = $orders;
     }
 
