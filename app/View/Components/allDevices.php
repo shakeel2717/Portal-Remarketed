@@ -15,7 +15,7 @@ class allDevices extends Component
      *
      * @return void
      */
-    public function __construct($allDevices)
+    public function __construct($allDevices,$orders)
     {
         $this->allDevices = $allDevices;
         $orders = order::get();
