@@ -10,6 +10,17 @@ class device extends Model
     use HasFactory;
     protected $table = 'devices';
     protected $primaryKey = 'id';
+    protected $fillable = [
+        'brand',
+        'name',
+        'appearance',
+        'functionality',
+        'color',
+        'boxed',
+        'additionalInfo',
+        'qty',
+        'price',
+    ];
 
 
     public function user()
