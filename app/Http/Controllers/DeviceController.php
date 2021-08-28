@@ -6,6 +6,7 @@ use App\Models\boxed;
 use App\Models\color;
 use App\Models\device;
 use App\Models\functionality;
+use App\Models\itemOrder;
 use App\Models\order;
 use Illuminate\Http\Request;
 

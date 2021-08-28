@@ -62,6 +62,9 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
 
     Route::get('/orders/drafts', [OrderController::class, 'draftsOrders'])->name('draftsOrders');
     Route::get('/orders/drafts/destory/{id}', [OrderController::class, 'OrdersDestory'])->name('OrdersDestory');
+
+    Route::get('/order/{id}', [OrderController::class, 'orderShow'])->name('order.show');
+    Route::get('/device/destory/{id}', [itemOrderController::class, 'deviceDestory'])->name('deviceDestory');
 });
 
 

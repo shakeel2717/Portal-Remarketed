@@ -11,7 +11,8 @@
                                         <span>Name</span>
                                     </span>
                                     <h4 class="mb-1">
-                                        <a class="text-dark" href="#">{{ $detail->name }}</a>
+                                        <a class="text-dark"
+                                            href="{{ route('order.show', ['id' => $detail->id]) }}">{{ $detail->name }}</a>
                                     </h4>
                                 </div>
                                 <div class="col-sm mb-2 mb-sm-0">
@@ -56,7 +57,8 @@
                                     </h4>
                                 </div>
                                 <div class="col-sm-auto">
-                                    <a href="{{ route('OrdersDestory',['id' => $detail->id ]) }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('OrdersDestory', ['id' => $detail->id]) }}"
+                                        class="btn btn-danger">Delete</a>
                                 </div>
                             </div>
                         </div>

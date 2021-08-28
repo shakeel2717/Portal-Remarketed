@@ -81,4 +81,17 @@ class OrderController extends Controller
         $task->delete();
         return redirect()->back()->with('message', 'Order Removed Successfully');
     }
+
+
+
+    public function orderShow($id)
+    {
+        $allDevices = itemOrder::where('order_id', $id)
+        ->leftJoin('devices', 'devices.id', '=', 'item_orders.devices_id')
+        ->select('devices.*')
+        ->get();
+        return view('dashboard.orders.show', [
+            'allDevices' => $allDevices,
+        ]);
+    }
 }
