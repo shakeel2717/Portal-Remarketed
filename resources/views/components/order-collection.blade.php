@@ -28,7 +28,7 @@
                                         <span>Status</span>
                                     </span>
                                     <h4 class="mb-1">
-                                        <a class="text-dark" href="#">{{ $detail->itemOrder[0]->status }}</a>
+                                        <a class="text-dark" href="#">Status</a>
                                     </h4>
                                 </div>
                                 <div class="col-sm mb-2 mb-sm-0">
