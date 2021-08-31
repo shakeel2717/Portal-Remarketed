@@ -28,8 +28,8 @@
                 </div>
             </div>
 
-            <input class="form-control rounded-0" type="search" placeholder="Search in front"
-                aria-label="Search in front">
+            <input class="form-control rounded-0" type="search" placeholder="Search in {{ env('APP_NAME') }}"
+                aria-label="Search in {{ env('APP_NAME') }}">
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -56,7 +56,8 @@
                     <div class="navbar-brand-wrapper">
                         <!-- Logo -->
                         <a class="navbar-brand" href="{{ route('dashboard') }}" aria-label="Front">
-                            <img class="navbar-brand-logo" src="{{ asset('assets/svg/logos/logo-light.svg') }}" alt="Logo">
+                            <img class="navbar-brand-logo" src="{{ asset('assets/svg/logos/logo-light.svg') }}"
+                                alt="Logo">
                         </a>
                         <!-- End Logo -->
                     </div>
@@ -74,8 +75,8 @@
                                         </div>
                                     </div>
                                     <input type="search" class="js-form-search form-control"
-                                        placeholder="Search in front" aria-label="Search in front"
-                                        data-hs-form-search-options='{
+                                        placeholder="Search in {{ env('APP_NAME') }}"
+                                        aria-label="Search in {{ env('APP_NAME') }}" data-hs-form-search-options='{
                            "clearIcon": "#clearSearchResultsIcon",
                            "dropMenuElement": "#searchDropdownMenu",
                            "dropMenuOffset": 20,
@@ -223,17 +224,16 @@
                                         <div class="card-body card-body-height">
                                             <!-- Nav -->
                                             <div class="nav nav-pills flex-column">
-                                                <a class="nav-link" href="#">
+                                                <a class="nav-link" href="{{ route('draftsOrders') }}">
                                                     <div class="media align-items-center">
                                                         <span class="mr-3">
                                                             <img class="avatar avatar-xs"
-                                                                src="../assets/svg/brands/atlassian.svg"
+                                                                src="{{ asset('assets/svg/brands/atlassian.svg') }}"
                                                                 alt="Image Description">
                                                         </span>
                                                         <div class="media-body text-truncate">
-                                                            <span class="h5 mb-0">Atlassian</span>
-                                                            <span class="d-block font-size-sm text-body">Security and
-                                                                control across Cloud</span>
+                                                            <span class="h5 mb-0">Orders</span>
+                                                            <span class="d-block font-size-sm text-body">Check all Orders in your Account</span>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -333,21 +333,11 @@
                     </div>
 
                     <div class="col-sm-auto">
-                        <!-- Dropdown -->
-                        <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Add New RMA
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="">RMA for Supplier</a>
-                                <a class="dropdown-item" href="">RMA for Customer</a>
-                            </div>
-                        </div>
-                        <!-- End Dropdown -->
+                        <a href="{{ route('draftsOrders') }}" class="btn btn-primary">Check Orders</a>
                     </div>
                 </div>
             </div>
+            <x-alert />
             <!-- End Page Header -->
             @yield('content')
         </div>
@@ -357,7 +347,7 @@
         <div class="footer">
             <div class="row justify-content-between align-items-center">
                 <div class="col">
-                    <p class="font-size-sm mb-0">&copy; {{ env('APP_NAME') }}. <span
+                    <p class="font-size-sm mb-0 mt-4">&copy; {{ env('APP_NAME') }}. <span
                             class="d-none d-sm-inline-block">{{ date('Y') }}
                             {{ env('APP_SHORT_DESC') }}.</span></p>
                 </div>
@@ -408,7 +398,6 @@
             $('.js-nav-tooltip-link').tooltip({
                 boundary: 'window'
             })
-
             $(".js-nav-tooltip-link").on("show.bs.tooltip", function(e) {
                 if (!$("body").hasClass("navbar-vertical-aside-mini-mode")) {
                     return false;
@@ -424,10 +413,8 @@
                 var select2 = $.HSCore.components.HSSelect2.init($(this));
             });
             Chart.plugins.unregister(ChartDataLabels);
-
             var start = moment();
             var end = moment();
-
             function cb(start, end) {
                 $('#js-daterangepicker-predefined .js-daterangepicker-predefined-preview').html(start.format(
                     'MMM D') + ' - ' + end.format('MMM D, YYYY'));
