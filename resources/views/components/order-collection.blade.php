@@ -53,7 +53,14 @@
                                         <span>Amount</span>
                                     </span>
                                     <h4 class="mb-1">
-                                        <a class="text-dark" href="#">$2132654</a>
+                                        <a class="text-dark" href="#"><?php
+                                            $count = 0;
+                                            foreach ($detail->itemOrder as $totalCount) {
+                                                $query = DB::table('devices')->find($totalCount->devices_id);
+                                                $count = $count + $query->price;
+                                            }
+                                            ?>
+                                            {{ $count }}</a>
                                     </h4>
                                 </div>
                                 <div class="col-sm-auto">

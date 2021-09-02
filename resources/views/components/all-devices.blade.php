@@ -51,6 +51,15 @@
                                         <span>{{ $device->color }}</span>
                                     </span>
                                 </div>
+                                <div class="col-sm mb-2 mb-sm-0">
+                                    <h4 class="mb-1">
+                                        <a class="text-dark" href="#">Price</a>
+                                    </h4>
+                                    <span class="d-block">
+                                        <i class="tio-company mr-1"></i>
+                                        <span>{{ $device->price }}</span>
+                                    </span>
+                                </div>
                                 <div class="col-sm-auto">
                                     <button class="btn btn-primary" data-toggle="modal"
                                         data-target="#exampleModalTopCover{{ $loop->iteration }}">Add Draft</button>

@@ -6,6 +6,7 @@ use App\Http\Controllers\adminDashboard;
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\FunctionalityController;
+use App\Http\Controllers\ItemOrderController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\profile;
 use App\Http\Controllers\SupportController;
@@ -62,7 +63,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('/orders/drafts/destory/{id}', [OrderController::class, 'OrdersDestory'])->name('OrdersDestory');
 
     Route::get('/order/{id}', [OrderController::class, 'orderShow'])->name('order.show');
-    Route::get('/device/destory/{id}', [itemOrderController::class, 'deviceDestory'])->name('deviceDestory');
+    Route::get('/device/destory/{id}', [ItemOrderController::class, 'deviceDestory'])->name('deviceDestory');
 
     Route::resource('/address',AddressController::class);
 });
