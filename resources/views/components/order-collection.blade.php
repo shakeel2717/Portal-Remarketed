@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12">
-        @forelse ($orderDetail->where('status','Draft') as $detail)
+        @forelse ($orderDetail as $detail)
             <div class="col mb-3">
                 <div class="card card-body">
                     <div class="media align-items-md-center">

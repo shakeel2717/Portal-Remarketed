@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('name');
             $table->string('status')->default("Draft");
             $table->unsignedInteger('devices_id');
-            $table->string('orderNumber');
+            $table->string('orderNumber')->unique();
             $table->timestamps();
         });
     }

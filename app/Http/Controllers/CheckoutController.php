@@ -15,10 +15,7 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        $query = order::get();
-        return view('dashboard.orders.quote', [
-            'orderDetail' => $query,
-        ]);
+        //
     }
 
     /**

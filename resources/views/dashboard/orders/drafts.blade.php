@@ -3,6 +3,6 @@
     Dashboard
 @endsection
 @section('content')
+    <x-orders-nav />
     <x-order-collection :orderDetail="$orderDetail" />
-    {{-- <x-draft-orders :allDevices="$allDevices" /> --}}
 @endsection

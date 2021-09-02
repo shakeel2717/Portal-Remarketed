@@ -25,7 +25,7 @@ class OrderController extends Controller
         $task->name = $validated['orderName'];
         $task->users_id = session('user')[0]->id;
         $task->devices_id = $validated['device_id'];
-        $task->orderNumber = Str::random(3);
+        $task->orderNumber = Str::random(10);
         $task->save();
         $orderId = $task->id;
 
@@ -59,16 +59,32 @@ class OrderController extends Controller
 
     public function draftsOrders()
     {
-        // $query = DB::table('item_orders')
-        //     ->join('devices', 'devices.id', '=', 'devices_id')
-        //     ->select('devices.*', 'item_orders.*')
-        //     ->get();
-        // return $query;
-        // $query = DB::table('item_orders')
-        //     ->join('orders', 'orders.orders_id', '=', 'item_orders.id')
-        //     ->get();
-        $query = order::get();
-        return view('dashboard.orders.draft', [
+        $query = order::where('status','Draft')->get();
+        return view('dashboard.orders.drafts', [
+            'orderDetail' => $query,
+        ]);
+    }
+
+    public function quoteOrders()
+    {
+        $query = order::where('status','Quote')->get();
+        return view('dashboard.orders.quote', [
+            'orderDetail' => $query,
+        ]);
+    }
+
+    public function reservedOrders()
+    {
+        $query = order::where('status','Reserved')->get();
+        return view('dashboard.orders.reserved', [
+            'orderDetail' => $query,
+        ]);
+    }
+
+    public function invoicedOrders()
+    {
+        $query = order::where('status','Invoiced')->get();
+        return view('dashboard.orders.invoiced', [
             'orderDetail' => $query,
         ]);
     }
