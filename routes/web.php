@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\adminAuth;
 use App\Http\Controllers\adminDashboard;
 use App\Http\Controllers\dashboard;
@@ -43,9 +44,6 @@ Route::get('/reset/{token?}', [userAuth::class, 'setPassword'])->name('setPasswo
 Route::post('/setPasswordReq', [userAuth::class, 'setPasswordReq'])->name('setPasswordReq');
 Route::get('/password-changed', [userAuth::class, 'passwordChanged'])->name('passwordChanged');
 
-
-
-
 Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('/index', [dashboard::class, 'index'])->name('dashboard');
     Route::get('/devices/working', [DeviceController::class, 'devicesWorking'])->name('devicesWorking');
@@ -65,6 +63,8 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
 
     Route::get('/order/{id}', [OrderController::class, 'orderShow'])->name('order.show');
     Route::get('/device/destory/{id}', [itemOrderController::class, 'deviceDestory'])->name('deviceDestory');
+
+    Route::resource('/address',AddressController::class);
 });
 
 

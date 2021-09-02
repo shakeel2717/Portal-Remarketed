@@ -85,7 +85,8 @@
                          }'>
                                     <a class="input-group-append" href="javascript:;">
                                         <span class="input-group-text">
-                                            <i id="clearSearchResultsIcon" class="tio-clear" style="display: none;"></i>
+                                            <i id="clearSearchResultsIcon" class="tio-clear"
+                                                style="display: none;"></i>
                                         </span>
                                     </a>
                                 </div>
@@ -233,7 +234,8 @@
                                                         </span>
                                                         <div class="media-body text-truncate">
                                                             <span class="h5 mb-0">Orders</span>
-                                                            <span class="d-block font-size-sm text-body">Check all Orders in your Account</span>
+                                                            <span class="d-block font-size-sm text-body">Check all
+                                                                Orders in your Account</span>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -285,7 +287,8 @@
                                         <div class="dropdown-divider"></div>
 
                                         <a class="dropdown-item" href="{{ route('profile') }}">
-                                            <span class="text-truncate pr-2" title="Profile &amp; account">Profile &amp;
+                                            <span class="text-truncate pr-2" title="Profile &amp; account">Profile
+                                                &amp;
                                                 account</span>
                                         </a>
 
@@ -293,6 +296,9 @@
                                             <span class="text-truncate pr-2" title="Settings">Settings</span>
                                         </a>
 
+                                        <a class="dropdown-item" href="{{ route('address.index') }}">
+                                            <span class="text-truncate pr-2" title="Settings">Shipping Address</span>
+                                        </a>
 
                                         <div class="dropdown-divider"></div>
 

@@ -30,4 +30,9 @@ class users extends Model
     {
         return $this->hasMany(itemOrder::class);
     }
+
+    public function address()
+    {
+        return $this->hasMany(address::class);
+    }
 }
