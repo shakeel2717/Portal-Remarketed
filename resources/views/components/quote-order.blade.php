@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12">
-        @forelse ($orderDetail->where('status','Draft') as $detail)
+        @forelse ($orderDetail->where('status','Quote') as $detail)
             <div class="col mb-3">
                 <div class="card card-body">
                     <div class="media align-items-md-center">
@@ -33,11 +33,11 @@
                                 </div>
                                 <div class="col-sm mb-2 mb-sm-0">
                                     <span class="d-block">
-                                        <span>Create Date</span>
+                                        <span>Order Date</span>
                                     </span>
                                     <h4 class="mb-1">
                                         <a class="text-dark"
-                                            href="#">{{ \Carbon\Carbon::createFromTimeStamp(strtotime($detail->created_at))->diffForHumans() }}</a>
+                                            href="#">{{ \Carbon\Carbon::createFromTimeStamp(strtotime($detail->updated_at))->diffForHumans() }}</a>
                                     </h4>
                                 </div>
                                 <div class="col-sm mb-2 mb-sm-0">
@@ -54,18 +54,15 @@
                                     </span>
                                     <h4 class="mb-1">
                                         <a class="text-dark" href="#"><?php
-                                            $count = 0;
-                                            foreach ($detail->itemOrder as $totalCount) {
-                                                $query = DB::table('devices')->find($totalCount->devices_id);
-                                                $count = $count + $query->price;
-                                            }
-                                            ?>
-                                            {{ $count }}</a>
+$count = 0;
+foreach ($detail->itemOrder as $totalCount) {
+    $query = DB::table('devices')->find($totalCount->devices_id);
+    $count = $count + $query->price;
+}
+?>
+                                            {{ env('APP_CURRENCY_SYMBOL') }} {{ number_format($count, 2) }}
+                                            {{ env('APP_CURRENCY') }}</a>
                                     </h4>
-                                </div>
-                                <div class="col-sm-auto">
-                                    <a href="{{ route('OrdersDestory', ['id' => $detail->id]) }}"
-                                        class="btn btn-danger">Delete</a>
                                 </div>
                             </div>
                         </div>

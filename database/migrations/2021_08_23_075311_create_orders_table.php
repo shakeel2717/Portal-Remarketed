@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->unsignedInteger('users_id');
             $table->string('name');
+            $table->string('status')->default("Draft");
             $table->unsignedInteger('devices_id');
             $table->string('orderNumber');
             $table->timestamps();

@@ -18,7 +18,7 @@ class CreateItemOrdersTable extends Migration
             $table->unsignedInteger('users_id');
             $table->unsignedInteger('devices_id');
             // $table->unsignedInteger('order_id');
-            $table->string('status');
+            // $table->string('status');
             $table->foreignId('order_id')
                 ->constrained()
                 ->onUpdate('cascade')

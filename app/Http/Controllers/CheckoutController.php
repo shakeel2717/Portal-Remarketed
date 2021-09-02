@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\checkout;
+use App\Models\order;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -14,7 +15,10 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        //
+        $query = order::get();
+        return view('dashboard.orders.quote', [
+            'orderDetail' => $query,
+        ]);
     }
 
     /**
@@ -45,6 +49,11 @@ class CheckoutController extends Controller
         $task->orders_id = $request->input('orders_id');
         $task->address_id = $request->input('address');
         $task->comment = $request->input('comment');
+        $task->save();
+
+        // updating the status of Order
+        $task = order::find($validated['orders_id']);
+        $task->status = "Quote";
         $task->save();
         return redirect()->back()->with('message', 'Checkout Request is now Under Review');
     }

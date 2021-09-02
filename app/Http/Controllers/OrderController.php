@@ -34,7 +34,6 @@ class OrderController extends Controller
         $task->users_id = session('user')[0]->id;
         $task->devices_id = $validated['device_id'];
         $task->order_id = $orderId;
-        $task->status = "Draft";
         $task->save();
 
 
@@ -54,7 +53,6 @@ class OrderController extends Controller
         $task->users_id = session('user')[0]->id;
         $task->devices_id = $validated['device_id'];
         $task->order_id = $validated['orderId'];
-        $task->status = "Draft";
         $task->save();
         return redirect()->back()->with('message', 'Order Created in Existing Order Successfully');
     }

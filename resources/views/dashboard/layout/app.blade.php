@@ -341,7 +341,7 @@
                     <div class="col-sm-auto">
                         <div class="d-flex">
                             <a href="{{ route('draftsOrders') }}" class="btn btn-primary m-3">Check Drafts Orders</a>
-                            <a href="{{ route('draftsOrders') }}" class="btn btn-primary  m-3">Checkout Orders</a>
+                            <a href="{{ route('checkout.index') }}" class="btn btn-primary  m-3">Checkout Orders</a>
                         </div>
                     </div>
                 </div>
