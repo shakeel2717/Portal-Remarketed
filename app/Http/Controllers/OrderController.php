@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\address;
 use App\Models\device;
 use App\Models\itemOrder;
 use App\Models\order;
@@ -87,11 +88,16 @@ class OrderController extends Controller
     public function orderShow($id)
     {
         $allDevices = itemOrder::where('order_id', $id)
-        ->leftJoin('devices', 'devices.id', '=', 'item_orders.devices_id')
-        ->select('devices.*')
-        ->get();
+            ->leftJoin('devices', 'devices.id', '=', 'item_orders.devices_id')
+            ->select('devices.*')
+            ->get();
+        // getting order detail
+        $orders = order::find($id);
+        $addresses = address::where('users_id', session('user')[0]->id)->get();
         return view('dashboard.orders.show', [
             'allDevices' => $allDevices,
+            'orders' => $orders,
+            'addresses' => $addresses,
         ]);
     }
 }

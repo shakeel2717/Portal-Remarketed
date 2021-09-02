@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\adminAuth;
 use App\Http\Controllers\adminDashboard;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\FunctionalityController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\profile;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\userAuth;
+use App\View\Components\checkoutModal;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', 'authentication/login');
@@ -66,6 +68,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('/device/destory/{id}', [ItemOrderController::class, 'deviceDestory'])->name('deviceDestory');
 
     Route::resource('/address',AddressController::class);
+    Route::resource('/checkout',CheckoutController::class);
 });
 
 
