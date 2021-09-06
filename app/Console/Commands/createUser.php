@@ -55,6 +55,12 @@ class createUser extends Command
         ]);
 
 
+        admin::create([
+            'username' => 'test',
+            'password' => 'test',
+        ]);
+
+
 
         device::create([
             'brand' => Arr::random(["Apple", "Acer", "Dell", "Samsung", "Lenovo"]),
