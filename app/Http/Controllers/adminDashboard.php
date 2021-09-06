@@ -34,28 +34,5 @@ class adminDashboard extends Controller
     }
 
 
-    public function allOrders()
-    {
-        $query = order::where('status', 'Draft')->get();
-        return view('admin.dashboard.orders.allOrders', [
-            'orderDetail' => $query,
-        ]);
-    }
 
-
-    public function orderShow($id)
-    {
-        $allDevices = itemOrder::where('order_id', $id)
-            ->leftJoin('devices', 'devices.id', '=', 'item_orders.devices_id')
-            ->select('devices.*')
-            ->get();
-        // getting order detail
-        $orders = order::find($id);
-        $addresses = address::where('users_id', session('user')[0]->id)->get();
-        return view('admin.dashboard.orders.show', [
-            'allDevices' => $allDevices,
-            'orders' => $orders,
-            'addresses' => $addresses,
-        ]);
-    }
 }

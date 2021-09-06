@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\adminAuth;
 use App\Http\Controllers\adminDashboard;
+use App\Http\Controllers\adminOrderController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\DeviceController;
@@ -71,8 +72,8 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('/order/{id}', [OrderController::class, 'orderShow'])->name('order.show');
     Route::get('/device/destory/{id}', [ItemOrderController::class, 'deviceDestory'])->name('deviceDestory');
 
-    Route::resource('/address',AddressController::class);
-    Route::resource('/checkout',CheckoutController::class);
+    Route::resource('/address', AddressController::class);
+    Route::resource('/checkout', CheckoutController::class);
 });
 
 
@@ -102,6 +103,9 @@ Route::prefix('admin/dashboard')->middleware(['admin'])->group(function () {
     Route::post('/addBoxes', [FunctionalityController::class, 'addBoxesReq'])->name('addBoxesReq');
 
 
-    Route::get('/all-orders', [adminDashboard::class, 'allOrders'])->name('allOrders');
-    Route::get('/order-show/{id}', [adminDashboard::class, 'orderShow'])->name('orderShow');
+    Route::get('/all-orders', [adminOrderController::class, 'allOrders'])->name('allOrders');
+    Route::get('/order-show/{id}', [adminOrderController::class, 'orderShow'])->name('orderShow');
+
+    Route::get('/quote-orders', [adminOrderController::class, 'allQuoteOrders'])->name('allQuoteOrders');
+    Route::get('/ship-orders', [adminOrderController::class, 'allShipOrders'])->name('allShipOrders');
 });

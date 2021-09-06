@@ -355,6 +355,25 @@
                             </a>
                         </li>
 
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('allQuoteOrders') }}" title="Layouts"
+                                data-placement="left">
+                                <i class="tio-home-vs-1-outlined nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">All Quote Orders</span>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('allShipOrders') }}" title="Layouts"
+                                data-placement="left">
+                                <i class="tio-home-vs-1-outlined nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">All Ship Orders</span>
+                            </a>
+                        </li>
+
+                        
+
 
                         <li class="nav-item ">
                             <a class="js-nav-tooltip-link nav-link " href="{{ route('addFunctionality') }}"
