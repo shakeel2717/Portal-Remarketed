@@ -348,12 +348,30 @@
 
 
                         <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link bg-dark text-white py-2 " href="{{ route('orderRequest') }}" title="Layouts"
+                                data-placement="left">
+                                <i class="tio-home-vs-1-outlined nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Orders Section</span>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item ">
                             <a class="js-nav-tooltip-link nav-link " href="{{ route('allOrders') }}" title="Layouts"
                                 data-placement="left">
                                 <i class="tio-home-vs-1-outlined nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">All Orders</span>
                             </a>
                         </li>
+
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('allDraftOrders') }}" title="Layouts"
+                                data-placement="left">
+                                <i class="tio-home-vs-1-outlined nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">All Drafts Orders</span>
+                            </a>
+                        </li>
+
 
                         <li class="nav-item ">
                             <a class="js-nav-tooltip-link nav-link " href="{{ route('allQuoteOrders') }}" title="Layouts"

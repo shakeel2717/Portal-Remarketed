@@ -4,19 +4,17 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class updateStatusModal extends Component
+class adminOrders extends Component
 {
-    public $loop;
-    public $detail;
+    public $orderDetail;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($loop,$detail)
+    public function __construct($orderDetail)
     {
-        $this->loop = $loop;
-        $this->detail = $detail;
+        $this->orderDetail = $orderDetail;
     }
 
     /**
@@ -26,6 +24,6 @@ class updateStatusModal extends Component
      */
     public function render()
     {
-        return view('components.update-status-modal');
+        return view('components.admin-orders');
     }
 }

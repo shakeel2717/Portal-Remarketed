@@ -63,12 +63,6 @@ foreach ($detail->itemOrder as $totalCount) {
                                             {{ $count }}</a>
                                     </h4>
                                 </div>
-                                <div class="col-sm-auto">
-                                    <button class="btn btn-primary" data-toggle="modal"
-                                        data-target="#updateOrderStatus{{ $loop->iteration }}">Update
-                                        Order</button>
-                                    <x-update-status-modal :loop="$loop" :detail="$detail" />
-                                </div>
                             </div>
                         </div>
                     </div>

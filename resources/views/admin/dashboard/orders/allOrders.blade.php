@@ -3,5 +3,5 @@
     Dashboard
 @endsection
 @section('content')
-    <x-update-order-status :orderDetail="$orderDetail" />
+    <x-admin-orders :orderDetail="$orderDetail" />
 @endsection

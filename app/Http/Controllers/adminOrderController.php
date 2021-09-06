@@ -9,6 +9,22 @@ use Illuminate\Http\Request;
 
 class adminOrderController extends Controller
 {
+
+
+    public function orderStatusRequest(Request $request)
+    {
+        $validated = $request->validate([
+            'status' => 'required|string',
+            'order_id' => 'required|integer',
+        ]);
+
+        $task = order::find($validated['order_id']);
+        $task->status = "Shipped";
+        $task->save();
+        return redirect()->back()->with('message', 'Order Status Changed Successfully');
+    }
+
+
     public function orderShow($id)
     {
         $allDevices = itemOrder::where('order_id', $id)
@@ -48,6 +64,23 @@ class adminOrderController extends Controller
     {
         $query = order::where('status', 'Shipped')->get();
         return view('admin.dashboard.orders.allShipOrders', [
+            'orderDetail' => $query,
+        ]);
+    }
+
+
+    public function allDraftOrders()
+    {
+        $query = order::where('status', 'Draft')->get();
+        return view('admin.dashboard.orders.allDraftOrders', [
+            'orderDetail' => $query,
+        ]);
+    }
+
+    public function orderRequest()
+    {
+        $query = order::get();
+        return view('admin.dashboard.orders.orderRequest', [
             'orderDetail' => $query,
         ]);
     }

@@ -83,7 +83,7 @@ class OrderController extends Controller
 
     public function invoicedOrders()
     {
-        $query = order::where('status','Invoiced')->get();
+        $query = order::where('status','Shipped')->get();
         return view('dashboard.orders.invoiced', [
             'orderDetail' => $query,
         ]);
