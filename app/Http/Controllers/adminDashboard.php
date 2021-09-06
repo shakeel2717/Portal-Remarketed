@@ -16,6 +16,7 @@ class adminDashboard extends Controller
 
         return view('admin.dashboard.index', [
             'totalUsers' => users::get(),
+            'orders' => order::get(),
         ]);
     }
 

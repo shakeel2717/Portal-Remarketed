@@ -78,4 +78,75 @@
     <!-- End Card -->
   </div>
 </div>
+<div class="row gx-2 gx-lg-3">
+  <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
+    <!-- Card -->
+    <div class="card h-100">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2">Draft Orders</h6>
+
+        <div class="row align-items-center gx-2">
+          <div class="col">
+            <span class="js-counter display-4 text-dark" data-value="24">{{$orders->where('status','Draft')->count()}}</span>
+          </div>
+
+        </div>
+        <!-- End Row -->
+      </div>
+    </div>
+    <!-- End Card -->
+  </div>
+
+  <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
+    <!-- Card -->
+    <div class="card h-100">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2">Shipped Orders</h6>
+
+        <div class="row align-items-center gx-2">
+          <div class="col">
+            <span class="js-counter display-4 text-dark" data-value="12">{{$orders->where('status','Shipped')->count()}}</span>
+          </div>
+        </div>
+        <!-- End Row -->
+      </div>
+    </div>
+    <!-- End Card -->
+  </div>
+
+  <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
+    <!-- Card -->
+    <div class="card h-100">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2">Under Review Orders</h6>
+
+        <div class="row align-items-center gx-2">
+          <div class="col">
+            <span class="js-counter display-4 text-dark" data-value="56">{{$orders->where('status','Quote')->count()}}</span>
+          </div>
+        </div>
+        <!-- End Row -->
+      </div>
+    </div>
+    <!-- End Card -->
+  </div>
+
+  <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
+    <!-- Card -->
+    <div class="card h-100">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2">Offered Orders</h6>
+
+        <div class="row align-items-center gx-2">
+          <div class="col">
+            <span class="js-counter display-4 text-dark" data-value="28">{{$orders->where('status','Offered')->count()}}</span>
+          </div>
+          
+        </div>
+        <!-- End Row -->
+      </div>
+    </div>
+    <!-- End Card -->
+  </div>
+</div>
 @endsection
