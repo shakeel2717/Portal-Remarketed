@@ -59,7 +59,7 @@ class OrderController extends Controller
 
     public function draftsOrders()
     {
-        $query = order::where('status','Draft')->get();
+        $query = order::where('status','Draft')->where('users_id',session('user')[0]->id)->get();
         return view('dashboard.orders.drafts', [
             'orderDetail' => $query,
         ]);
@@ -67,7 +67,7 @@ class OrderController extends Controller
 
     public function quoteOrders()
     {
-        $query = order::where('status','Quote')->get();
+        $query = order::where('status','Quote')->where('users_id',session('user')[0]->id)->get();
         return view('dashboard.orders.quote', [
             'orderDetail' => $query,
         ]);
@@ -75,7 +75,7 @@ class OrderController extends Controller
 
     public function reservedOrders()
     {
-        $query = order::where('status','Reserved')->get();
+        $query = order::where('status','Reserved')->where('users_id',session('user')[0]->id)->get();
         return view('dashboard.orders.reserved', [
             'orderDetail' => $query,
         ]);
@@ -83,7 +83,7 @@ class OrderController extends Controller
 
     public function invoicedOrders()
     {
-        $query = order::where('status','Shipped')->get();
+        $query = order::where('status','Shipped')->where('users_id',session('user')[0]->id)->get();
         return view('dashboard.orders.invoiced', [
             'orderDetail' => $query,
         ]);
