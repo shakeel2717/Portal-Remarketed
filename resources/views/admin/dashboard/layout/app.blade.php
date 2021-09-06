@@ -51,7 +51,7 @@
         <div class="navbar-nav-wrap">
             <div class="navbar-brand-wrapper">
                 <!-- Logo -->
-                <a class="navbar-brand" href="{{ route('dashboard') }}" aria-label="Front">
+                <a class="navbar-brand" href="{{ route('adminDashboard') }}" aria-label="Front">
                     <img class="navbar-brand-logo" src="{{ asset('assets/svg/logos/logo.svg') }}" alt="Logo">
                     <img class="navbar-brand-logo-mini" src="{{ asset('assets/svg/logos/logo-short.svg') }}"
                         alt="Logo">
@@ -301,7 +301,7 @@
         <div class="navbar-vertical-container">
             <div class="navbar-vertical-footer-offset">
                 <div class="navbar-brand-wrapper justify-content-between">
-                    <a class="navbar-brand" href="{{ route('dashboard') }}" aria-label="Front">
+                    <a class="navbar-brand" href="{{ route('adminDashboard') }}" aria-label="Front">
                         <img class="navbar-brand-logo" src="{{ asset('assets/svg/logos/logo.svg') }}" alt="Logo">
                         <img class="navbar-brand-logo-mini" src="{{ asset('assets/svg/logos/logo-short.svg') }}"
                             alt="Logo">
@@ -343,6 +343,15 @@
                                 <i class="tio-home-vs-1-outlined nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Add
                                     Device</span>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('allOrders') }}" title="Layouts"
+                                data-placement="left">
+                                <i class="tio-home-vs-1-outlined nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">All Orders</span>
                             </a>
                         </li>
 

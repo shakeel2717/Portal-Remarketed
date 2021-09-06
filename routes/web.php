@@ -100,4 +100,8 @@ Route::prefix('admin/dashboard')->middleware(['admin'])->group(function () {
 
     Route::get('/addBoxes', [FunctionalityController::class, 'addBoxes'])->name('addBoxes');
     Route::post('/addBoxes', [FunctionalityController::class, 'addBoxesReq'])->name('addBoxesReq');
+
+
+    Route::get('/all-orders', [adminDashboard::class, 'allOrders'])->name('allOrders');
+    Route::get('/order-show/{id}', [adminDashboard::class, 'orderShow'])->name('orderShow');
 });
