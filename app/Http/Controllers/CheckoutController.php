@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\checkout;
+use App\Models\offerDevice;
 use App\Models\order;
 use Illuminate\Http\Request;
 
@@ -98,5 +99,21 @@ class CheckoutController extends Controller
     public function destroy(checkout $checkout)
     {
         //
+    }
+
+
+    public function offerDeviceReq(Request $request)
+    {
+        $validated = $request->validate([
+            'device_id' => 'required|integer',
+            'offer' => 'required|string',
+        ]);
+        // inserting this Order into Database
+        $task = new offerDevice();
+        $task->device_id = $validated['device_id'];
+        $task->amount = $validated['offer'];
+        $task->save();
+        return redirect()->back()->with('message', 'Your Offer Request is now Under Review');
+
     }
 }

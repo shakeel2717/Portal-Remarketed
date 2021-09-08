@@ -33,4 +33,9 @@ class device extends Model
     {
         return $this->belongsTo(itemOrder::class);
     }
+
+    public function device()
+    {
+        return $this->hasMany(offerDevice::class);
+    }
 }

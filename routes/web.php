@@ -74,6 +74,8 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
 
     Route::resource('/address', AddressController::class);
     Route::resource('/checkout', CheckoutController::class);
+
+    Route::post('/offer-device', [CheckoutController::class, 'offerDeviceReq'])->name('offerDeviceReq');
 });
 
 
