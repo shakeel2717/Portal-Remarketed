@@ -3,7 +3,6 @@
     Dashboard
 @endsection
 @section('content')
-
     <body data-offset="0" data-hs-scrollspy-options='{ "target": "#navbarSettings" }'>
         <div class="row">
             <div class="col-md-5">
