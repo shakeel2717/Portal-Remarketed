@@ -69,6 +69,12 @@ foreach ($detail->itemOrder as $totalCount) {
                                             class="btn btn-danger">Delete</a>
                                     </div>
                                 @endif
+                                @if ($detail->status == "Draft")
+                                    <div class="col-sm-auto">
+                                        <a href="{{ route('order.show', ['id' => $detail->id]) }}"
+                                            class="btn btn-primary">Checkout</a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

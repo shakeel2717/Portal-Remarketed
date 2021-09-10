@@ -42,11 +42,17 @@
                                   <form action="{{ route('orderStatusRequest') }}" method="POST">
                                       @csrf
                                       <div class="form-group">
-                                          <input type="hidden" name="order_id" id="order_id" value="{{ $detail->id }}">
+                                          <input type="hidden" name="order_id" id="order_id"
+                                              value="{{ $detail->id }}">
                                           <label for="status">Status</label>
                                           <select name="status" id="status" class="form-control">
-                                              <option value="Shipped">Shipped</option>
+                                              <option value="Shipped">Complete</option>
                                           </select>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="tracking">Tracking #</label>
+                                          <input type="text" name="tracking" id="tracking" class="form-control"
+                                              placeholder="Tracking Nubmer for This Order">
                                       </div>
                                       <div class="form-group">
                                           <input type="submit" class="btn btn-primary btn-block" value="Submit">

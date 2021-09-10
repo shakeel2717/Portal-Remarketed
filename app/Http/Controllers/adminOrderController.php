@@ -16,10 +16,12 @@ class adminOrderController extends Controller
         $validated = $request->validate([
             'status' => 'required|string',
             'order_id' => 'required|integer',
+            'tracking' => 'required|string',
         ]);
 
         $task = order::find($validated['order_id']);
         $task->status = "Shipped";
+        $task->tracking = $validated['tracking'];
         $task->save();
         return redirect()->back()->with('message', 'Order Status Changed Successfully');
     }
@@ -79,7 +81,7 @@ class adminOrderController extends Controller
 
     public function orderRequest()
     {
-        $query = order::get();
+        $query = order::where('status','Quote')->get();
         return view('admin.dashboard.orders.orderRequest', [
             'orderDetail' => $query,
         ]);
