@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\address;
-use App\Models\device;
 use App\Models\itemOrder;
 use App\Models\order;
-use App\Models\users;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -26,6 +23,7 @@ class OrderController extends Controller
         $task = new order();
         if ($validated['offer'] != Null) {
             $task->status = "Reserved";
+            $task->type = "Offer";
         }
 
         $task->name = $validated['orderName'];
@@ -37,15 +35,10 @@ class OrderController extends Controller
 
         // inserting Item Order
         $task = new itemOrder();
-        if ($validated['offer'] != Null) {
-            $task->type = "Offer";
-        }
         $task->users_id = session('user')[0]->id;
         $task->devices_id = $validated['device_id'];
         $task->order_id = $orderId;
         $task->save();
-
-
         return redirect()->back()->with('message', 'Order Created Successfully');
     }
 
@@ -55,7 +48,22 @@ class OrderController extends Controller
         $validated = $request->validate([
             'orderId' => 'required|integer',
             'device_id' => 'required|integer',
+            'offer' => 'nullable|string',
         ]);
+
+        if ($validated['offer'] != Null) {
+            // checking if this Order belong to a non offer Order.
+            $query = order::findOrFail($validated['orderId']);
+            if ($query->type != "Offer") {
+                return redirect()->back()->withErrors('Please Create new Order or Select Order who belong to Offers');
+            }
+        } else {
+            // checking if this Order belong to a non offer Order.
+            $query = order::findOrFail($validated['orderId']);
+            if ($query->type != "Direct") {
+                return redirect()->back()->withErrors('Please Create new Order or Select Order who not belong to Offers');
+            }
+        }
 
         // inserting Item Order
         $task = new itemOrder();
@@ -63,6 +71,7 @@ class OrderController extends Controller
         $task->devices_id = $validated['device_id'];
         $task->order_id = $validated['orderId'];
         $task->save();
+
         return redirect()->back()->with('message', 'Order Created in Existing Order Successfully');
     }
 

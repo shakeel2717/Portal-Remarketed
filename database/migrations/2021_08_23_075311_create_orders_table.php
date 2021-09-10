@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('users_id');
             $table->string('name');
             $table->string('status')->default("Draft");
+            $table->string('type')->default("Direct");
             $table->string('tracking')->nullable();
             $table->unsignedInteger('devices_id');
             $table->string('orderNumber')->unique();
