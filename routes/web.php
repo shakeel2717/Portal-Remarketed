@@ -111,6 +111,8 @@ Route::prefix('admin/dashboard')->middleware(['admin'])->group(function () {
     Route::get('/quote-orders', [adminOrderController::class, 'allQuoteOrders'])->name('allQuoteOrders');
     Route::get('/ship-orders', [adminOrderController::class, 'allShipOrders'])->name('allShipOrders');
     Route::get('/draft-orders', [adminOrderController::class, 'allDraftOrders'])->name('allDraftOrders');
+
+    Route::get('/offer-orders', [adminOrderController::class, 'allOfferOrders'])->name('allOfferOrders');
     
 
     Route::get('/orders-request', [adminOrderController::class, 'orderRequest'])->name('orderRequest');

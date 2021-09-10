@@ -364,6 +364,15 @@
                             </a>
                         </li>
 
+
+                        <li class="nav-item ">
+                            <a class="js-nav-tooltip-link nav-link " href="{{ route('allOfferOrders') }}" title="Layouts"
+                                data-placement="left">
+                                <i class="tio-home-vs-1-outlined nav-icon"></i>
+                                <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">All Offer Orders</span>
+                            </a>
+                        </li>
+
                         <li class="nav-item ">
                             <a class="js-nav-tooltip-link nav-link " href="{{ route('allDraftOrders') }}" title="Layouts"
                                 data-placement="left">

@@ -62,6 +62,14 @@ class adminOrderController extends Controller
     }
 
 
+    public function allOfferOrders()
+    {
+        $query = order::where('type', 'Offer')->get();
+        return view('admin.dashboard.orders.allOfferOrders', [
+            'orderDetail' => $query,
+        ]);
+    }
+
     public function allShipOrders()
     {
         $query = order::where('status', 'Shipped')->get();
