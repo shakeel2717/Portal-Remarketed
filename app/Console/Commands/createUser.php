@@ -3,14 +3,12 @@
 namespace App\Console\Commands;
 
 use App\Models\admin;
-use App\Models\Customer;
 use App\Models\device;
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
-use App\Models\Supplier;
 use App\Models\users;
-use App\Models\Warehouse;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 
 class createUser extends Command
 {
@@ -19,14 +17,14 @@ class createUser extends Command
      *
      * @var string
      */
-    protected $signature = 'make:user';
+    protected $signature = 'make:clean';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create Default user for Testing Product';
+    protected $description = 'Create Default user for Testing Product and clean everything';
 
 
     /**
@@ -227,11 +225,13 @@ class createUser extends Command
             'qty' => Arr::random([1, 2, 3, 4, 5]),
             'price' => Arr::random([10, 200, 300, 400, 500]),
         ]);
-        
 
 
-
-        
-        return $this->info('Test Account Setup Successfully');
+        // clearing the cache
+        Artisan::call('cache:clear');
+        Artisan::call('config:clear');
+        Artisan::call('view:clear');
+        Artisan::call('route:clear');
+        return $this->info('Test Account Setup Successfully and Env Clean');
     }
 }

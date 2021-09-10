@@ -51,6 +51,21 @@
                                         <span>{{ $device->color }}</span>
                                     </span>
                                 </div>
+                                @php
+                                    $orderDetail = DB::table('orders')->find($device->order_id);
+                                @endphp
+                                @if ($orderDetail->status == 'Reserved')
+                                    <div class="col-sm mb-2 mb-sm-0">
+                                        <h4 class="mb-1">
+                                            <a class="text-dark" href="#">Offer Price</a>
+                                        </h4>
+                                        <span class="d-block">
+                                            <i class="tio-company mr-1"></i>
+                                            <span>{{ env('APP_CURRENCY') }}
+                                                {{ number_format($device->offer) }}</span>
+                                        </span>
+                                    </div>
+                                @endif
                                 <div class="col-sm mb-2 mb-sm-0">
                                     <h4 class="mb-1">
                                         <a class="text-dark" href="#">Price</a>

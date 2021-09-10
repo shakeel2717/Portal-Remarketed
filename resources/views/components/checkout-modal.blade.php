@@ -63,7 +63,7 @@ foreach ($orders->itemOrder as $totalCount) {
                 <form action="{{ route('checkout.store') }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="address">Shipping Address</label>
+                        <label for="address">Shipping Address</label> <span><a href="{{ route('address.index') }}">Manage Address</a></span>
                         <select name="address" id="address" class="form-control">
                             @foreach ($addresses as $address)
                                 <option value="{{ $address->id }}">{{ $address->address }}</option>

@@ -54,19 +54,21 @@
                                     </span>
                                     <h4 class="mb-1">
                                         <a class="text-dark" href="#"><?php
-                                            $count = 0;
-                                            foreach ($detail->itemOrder as $totalCount) {
-                                                $query = DB::table('devices')->find($totalCount->devices_id);
-                                                $count = $count + $query->price;
-                                            }
-                                            ?>
+$count = 0;
+foreach ($detail->itemOrder as $totalCount) {
+    $query = DB::table('devices')->find($totalCount->devices_id);
+    $count = $count + $query->price;
+}
+?>
                                             {{ $count }}</a>
                                     </h4>
                                 </div>
-                                <div class="col-sm-auto">
-                                    <a href="{{ route('OrdersDestory', ['id' => $detail->id]) }}"
-                                        class="btn btn-danger">Delete</a>
-                                </div>
+                                @if ($detail->status != "Shipped" && $detail->status != "Reserved")
+                                    <div class="col-sm-auto">
+                                        <a href="{{ route('OrdersDestory', ['id' => $detail->id]) }}"
+                                            class="btn btn-danger">Delete</a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

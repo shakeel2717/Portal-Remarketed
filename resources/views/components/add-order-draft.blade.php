@@ -35,12 +35,16 @@
                   <div class="text-center">
                       <ul class="nav nav-segment nav-pills mb-7" role="tablist">
                           <li class="nav-item">
-                              <a class="nav-link active" id="nav-one-eg1{{ $loop->iteration }}-tab" data-toggle="pill" href="#nav-one-eg1{{ $loop->iteration }}"
-                                  role="tab" aria-controls="nav-one-eg1{{ $loop->iteration }}" aria-selected="true">Existing order</a>
+                              <a class="nav-link active" id="nav-one-eg1{{ $loop->iteration }}-tab" data-toggle="pill"
+                                  href="#nav-one-eg1{{ $loop->iteration }}" role="tab"
+                                  aria-controls="nav-one-eg1{{ $loop->iteration }}" aria-selected="true">Existing
+                                  order</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" id="nav-two-eg1{{ $loop->iteration }}1-tab" data-toggle="pill" href="#nav-two-eg1{{ $loop->iteration }}1" role="tab"
-                                  aria-controls="nav-two-eg1{{ $loop->iteration }}1" aria-selected="false">New order</a>
+                              <a class="nav-link" id="nav-two-eg1{{ $loop->iteration }}1-tab" data-toggle="pill"
+                                  href="#nav-two-eg1{{ $loop->iteration }}1" role="tab"
+                                  aria-controls="nav-two-eg1{{ $loop->iteration }}1" aria-selected="false">New
+                                  order</a>
                           </li>
 
                       </ul>
@@ -58,7 +62,8 @@
                                       <div class="form-group">
                                           <label for="orderName">Select Order Name</label>
                                           <!-- Select2 -->
-                                          <select class="js-select2-custom custom-select" name="orderId"> size="1" style="opacity: 0;"
+                                          <select class="js-select2-custom custom-select" name="orderId"> size="1"
+                                              style="opacity: 0;"
                                               @forelse ($orders as $order)
                                                   <option value="{{ $order->id }}">{{ $order->name }}</option>
                                               @empty
@@ -69,6 +74,39 @@
                                           <input type="hidden" name="device_id" id="device_id"
                                               value="{{ $device->id }}">
                                       </div>
+                                      <hr>
+                                      <p>We also Accpet offers on this Device</p>
+                                      <div class="accordion mb-4" id="accordionExample">
+                                          <div class="card" id="headingOne">
+                                              <a class="card-header card-btn btn-block" href="javascript:;"
+                                                  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                                  aria-controls="collapseOne">
+                                                  Place Offer Bid
+
+                                                  <span class="card-btn-toggle">
+                                                      <span class="card-btn-toggle-default">
+                                                          <i class="tio-add"></i>
+                                                      </span>
+                                                      <span class="card-btn-toggle-active">
+                                                          <i class="tio-remove"></i>
+                                                      </span>
+                                                  </span>
+                                              </a>
+
+                                              <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                                  data-parent="#accordionExample">
+                                                  <div class="card-body">
+                                                      <div class="form-group">
+                                                          <label for="offer">Offer on This Device</label>
+                                                          <input type="text" name="offer" id="offer"
+                                                              class="form-control"
+                                                              placeholder="Amount you want to Offer">
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                      </div>
                                       <div class="form-group">
                                           <input type="submit" class="btn btn-primary btn-block" value="Submit">
                                       </div>
@@ -77,7 +115,8 @@
                           </div>
                       </div>
 
-                      <div class="tab-pane fade" id="nav-two-eg1{{ $loop->iteration }}1" role="tabpanel" aria-labelledby="nav-two-eg1{{ $loop->iteration }}1-tab">
+                      <div class="tab-pane fade" id="nav-two-eg1{{ $loop->iteration }}1" role="tabpanel"
+                          aria-labelledby="nav-two-eg1{{ $loop->iteration }}1-tab">
                           <div class="row">
                               <div class="col-md-12">
                                   <form action="{{ route('orderReq') }}" method="POST">
@@ -88,6 +127,38 @@
                                               placeholder="Order Name">
                                           <input type="hidden" name="device_id" id="device_id"
                                               value="{{ $device->id }}">
+                                      </div>
+                                      <hr>
+                                      <p>We also Accpet offers on this Device</p>
+                                      <div class="accordion mb-4" id="accordionExample">
+                                          <div class="card" id="headingOne">
+                                              <a class="card-header card-btn btn-block" href="javascript:;"
+                                                  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                                  aria-controls="collapseOne">
+                                                  Place Offer Bid
+
+                                                  <span class="card-btn-toggle">
+                                                      <span class="card-btn-toggle-default">
+                                                          <i class="tio-add"></i>
+                                                      </span>
+                                                      <span class="card-btn-toggle-active">
+                                                          <i class="tio-remove"></i>
+                                                      </span>
+                                                  </span>
+                                              </a>
+
+                                              <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                                  data-parent="#accordionExample">
+                                                  <div class="card-body">
+                                                      <div class="form-group">
+                                                          <label for="offer">Offer on This Device</label>
+                                                          <input type="text" name="offer" id="offer"
+                                                              class="form-control" placeholder="Amount you want to Offer">
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+
                                       </div>
                                       <div class="form-group">
                                           <input type="submit" class="btn btn-primary btn-block" value="Submit">

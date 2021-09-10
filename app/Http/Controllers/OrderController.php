@@ -18,10 +18,16 @@ class OrderController extends Controller
         $validated = $request->validate([
             'orderName' => 'required|string|min:3',
             'device_id' => 'required|integer',
+            'offer' => 'nullable|string',
+            'orderId' => 'nullable|integer',
         ]);
 
         // inserting into database
         $task = new order();
+        if ($validated['offer'] != Null) {
+            $task->status = "Reserved";
+        }
+
         $task->name = $validated['orderName'];
         $task->users_id = session('user')[0]->id;
         $task->devices_id = $validated['device_id'];
@@ -31,6 +37,9 @@ class OrderController extends Controller
 
         // inserting Item Order
         $task = new itemOrder();
+        if ($validated['offer'] != Null) {
+            $task->type = "Offer";
+        }
         $task->users_id = session('user')[0]->id;
         $task->devices_id = $validated['device_id'];
         $task->order_id = $orderId;
@@ -59,7 +68,7 @@ class OrderController extends Controller
 
     public function draftsOrders()
     {
-        $query = order::where('status','Draft')->where('users_id',session('user')[0]->id)->get();
+        $query = order::where('status', 'Draft')->where('users_id', session('user')[0]->id)->get();
         return view('dashboard.orders.drafts', [
             'orderDetail' => $query,
         ]);
@@ -67,7 +76,7 @@ class OrderController extends Controller
 
     public function quoteOrders()
     {
-        $query = order::where('status','Quote')->where('users_id',session('user')[0]->id)->get();
+        $query = order::where('status', 'Quote')->where('users_id', session('user')[0]->id)->get();
         return view('dashboard.orders.quote', [
             'orderDetail' => $query,
         ]);
@@ -75,7 +84,7 @@ class OrderController extends Controller
 
     public function reservedOrders()
     {
-        $query = order::where('status','Reserved')->where('users_id',session('user')[0]->id)->get();
+        $query = order::where('status', 'Reserved')->where('users_id', session('user')[0]->id)->get();
         return view('dashboard.orders.reserved', [
             'orderDetail' => $query,
         ]);
@@ -83,7 +92,7 @@ class OrderController extends Controller
 
     public function invoicedOrders()
     {
-        $query = order::where('status','Shipped')->where('users_id',session('user')[0]->id)->get();
+        $query = order::where('status', 'Shipped')->where('users_id', session('user')[0]->id)->get();
         return view('dashboard.orders.invoiced', [
             'orderDetail' => $query,
         ]);
