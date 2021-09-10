@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\address;
 use App\Models\itemOrder;
+use App\Models\offerDevice;
 use App\Models\order;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -18,10 +19,18 @@ class OrderController extends Controller
             'offer' => 'nullable|string',
             'orderId' => 'nullable|integer',
         ]);
+        $randNumber = Str::random(10);
 
         // inserting into database
         $task = new order();
         if ($validated['offer'] != Null) {
+            // inserting offer price
+            $updateTask = new offerDevice();
+            $updateTask->orderNumber = $randNumber;
+            $updateTask->device_id = $validated['device_id'];
+            $updateTask->amount = $validated['offer'];
+            $updateTask->status = "Open";
+            $updateTask->save();
             $task->status = "Reserved";
             $task->type = "Offer";
         }
@@ -29,7 +38,7 @@ class OrderController extends Controller
         $task->name = $validated['orderName'];
         $task->users_id = session('user')[0]->id;
         $task->devices_id = $validated['device_id'];
-        $task->orderNumber = Str::random(10);
+        $task->orderNumber = $randNumber;
         $task->save();
         $orderId = $task->id;
 
@@ -51,15 +60,21 @@ class OrderController extends Controller
             'offer' => 'nullable|string',
         ]);
 
+        // checking if this Order belong to a non offer Order.
+        $query = order::findOrFail($validated['orderId']);
         if ($validated['offer'] != Null) {
-            // checking if this Order belong to a non offer Order.
-            $query = order::findOrFail($validated['orderId']);
             if ($query->type != "Offer") {
                 return redirect()->back()->withErrors('Please Create new Order or Select Order who belong to Offers');
             }
+
+            // inserting offer price
+            $updateTask = new offerDevice();
+            $updateTask->orderNumber = $query->orderNumber;
+            $updateTask->device_id = $validated['device_id'];
+            $updateTask->amount = $validated['offer'];
+            $updateTask->status = "Open";
+            $updateTask->save();
         } else {
-            // checking if this Order belong to a non offer Order.
-            $query = order::findOrFail($validated['orderId']);
             if ($query->type != "Direct") {
                 return redirect()->back()->withErrors('Please Create new Order or Select Order who not belong to Offers');
             }

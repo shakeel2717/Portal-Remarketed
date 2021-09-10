@@ -63,6 +63,11 @@ foreach ($detail->itemOrder as $totalCount) {
                                             {{ $count }}</a>
                                     </h4>
                                 </div>
+                                @if ($detail->status == 'Reserved')
+                                    <div class="col-sm-auto">
+                                        <a href="{{ route('allOfferOrdersReq',['id' => $detail->id ]) }}" class="btn btn-primary">Accept Order</a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

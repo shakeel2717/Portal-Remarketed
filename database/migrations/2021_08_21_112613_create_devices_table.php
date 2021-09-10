@@ -24,6 +24,7 @@ class CreateDevicesTable extends Migration
             $table->string('additionalInfo')->nullable();
             $table->string('qty');
             $table->string('price');
+            $table->string('offerPrice')->nullable();
             $table->timestamps();
         });
     }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\address;
+use App\Models\device;
 use App\Models\itemOrder;
+use App\Models\offerDevice;
 use App\Models\order;
 use Illuminate\Http\Request;
 
@@ -64,10 +66,31 @@ class adminOrderController extends Controller
 
     public function allOfferOrders()
     {
-        $query = order::where('type', 'Offer')->get();
+        $query = order::where(['type' => 'Offer' , 'status' => "Reserved"])->get();
         return view('admin.dashboard.orders.allOfferOrders', [
             'orderDetail' => $query,
         ]);
+    }
+
+
+    public function allOfferOrdersReq(Order $id)
+    {
+        // accpeting this Order
+        // getting all Item Orders in this Order
+        $itemOrders = itemOrder::where('order_id', $id->id)->get();
+        foreach ($itemOrders as $itemOrder) {
+            // getting offer Price for this device
+            $offerDevice = offerDevice::where('device_id', $itemOrder->devices_id)->first();
+            // updating this Device Price
+            $device = device::find($itemOrder->devices_id);
+            $device->price = $offerDevice->amount;
+            $device->save();
+        }
+        // updating this Order Status
+        $order = order::find($id->id);
+        $order->status = "Shipped";
+        $order->save();
+        return redirect()->back()->with('message', 'Offer Accepted, All Devices Price Changed');
     }
 
     public function allShipOrders()
@@ -89,7 +112,7 @@ class adminOrderController extends Controller
 
     public function orderRequest()
     {
-        $query = order::where('status','Quote')->get();
+        $query = order::where('status', 'Quote')->get();
         return view('admin.dashboard.orders.orderRequest', [
             'orderDetail' => $query,
         ]);
