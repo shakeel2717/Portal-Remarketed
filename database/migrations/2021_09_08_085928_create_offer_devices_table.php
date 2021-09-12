@@ -15,6 +15,7 @@ class CreateOfferDevicesTable extends Migration
     {
         Schema::create('offer_devices', function (Blueprint $table) {
             $table->id();
+            $table->integer('users_id');
             $table->integer('device_id');
             $table->string('orderNumber');
             $table->string('amount');

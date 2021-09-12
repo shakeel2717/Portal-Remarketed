@@ -67,13 +67,7 @@ class OrderController extends Controller
         //     //     return redirect()->back()->withErrors('Please Create new Order or Select Order who belong to Offers');
         //     // }
 
-        //     // inserting offer price
-        //     $updateTask = new offerDevice();
-        //     $updateTask->orderNumber = $query->orderNumber;
-        //     $updateTask->device_id = $validated['device_id'];
-        //     $updateTask->amount = $validated['offer'];
-        //     $updateTask->status = "Open";
-        //     $updateTask->save();
+        //     
         // } else {
         //     if ($query->type != "Direct") {
         //         return redirect()->back()->withErrors('Please Create new Order or Select Order who not belong to Offers');
@@ -146,5 +140,23 @@ class OrderController extends Controller
             'orders' => $orders,
             'addresses' => $addresses,
         ]);
+    }
+
+    public function offerPriceReq(Request $request)
+    {
+        $validated = $request->validate([
+            'orderId' => 'required|integer',
+            'device_id' => 'required|integer',
+            'offer' => 'nullable|string',
+        ]);
+        // inserting offer price
+        $updateTask = new offerDevice();
+        $updateTask->users_id = session('user')[0]->id;
+        $updateTask->orderNumber = $validated['orderId'];
+        $updateTask->device_id = $validated['device_id'];
+        $updateTask->amount = $validated['offer'];
+        $updateTask->status = "Open";
+        $updateTask->save();
+        return redirect()->back()->with('message', 'Your Custom Offer Request in Under Review');
     }
 }

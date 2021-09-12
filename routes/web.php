@@ -61,6 +61,8 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
 
     Route::post('/orderReq', [OrderController::class, 'orderReq'])->name('orderReq');
     Route::post('/orderExistingReq', [OrderController::class, 'orderExistingReq'])->name('orderExistingReq');
+    Route::post('/offer-price', [OrderController::class, 'offerPriceReq'])->name('offerPriceReq');
+    
 
     Route::get('/orders/drafts', [OrderController::class, 'draftsOrders'])->name('draftsOrders');
     Route::get('/orders/quote', [OrderController::class, 'quoteOrders'])->name('quoteOrders');

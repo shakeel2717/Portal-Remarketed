@@ -13,6 +13,6 @@
         </div>
     </div>
     <hr>
-    <x-show-order :allDevices="$allDevices" />
+    <x-show-order :allDevices="$allDevices" :order="$orders->id" />
     <x-checkout-modal :orders="$orders" :addresses="$addresses" />
 @endsection
