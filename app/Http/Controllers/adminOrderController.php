@@ -66,7 +66,7 @@ class adminOrderController extends Controller
 
     public function allOfferOrders()
     {
-        $query = order::where(['type' => 'Offer' , 'status' => "Reserved"])->get();
+        $query = order::where('status' , "Quote")->get();
         return view('admin.dashboard.orders.allOfferOrders', [
             'orderDetail' => $query,
         ]);

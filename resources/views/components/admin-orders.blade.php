@@ -54,16 +54,16 @@
                                     </span>
                                     <h4 class="mb-1">
                                         <a class="text-dark" href="#"><?php
-$count = 0;
-foreach ($detail->itemOrder as $totalCount) {
-    $query = DB::table('devices')->find($totalCount->devices_id);
-    $count = $count + $query->price;
-}
-?>
+                                        $count = 0;
+                                        foreach ($detail->itemOrder as $totalCount) {
+                                            $query = DB::table('devices')->find($totalCount->devices_id);
+                                            $count = $count + $query->price;
+                                        }
+                                        ?>
                                             {{ $count }}</a>
                                     </h4>
                                 </div>
-                                @if ($detail->status == 'Reserved')
+                                @if ($detail->status == 'Quote')
                                     <div class="col-sm-auto">
                                         <a href="{{ route('allOfferOrdersReq',['id' => $detail->id ]) }}" class="btn btn-primary">Accept Order</a>
                                     </div>
