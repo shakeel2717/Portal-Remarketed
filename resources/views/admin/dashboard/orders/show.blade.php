@@ -3,5 +3,5 @@
     Dashboard
 @endsection
 @section('content')
-    <x-show-order :allDevices="$allDevices" />
+    <x-show-order-admin :allDevices="$allDevices" :order="$orders->id" />
 @endsection

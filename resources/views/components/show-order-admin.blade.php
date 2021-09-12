@@ -6,7 +6,7 @@
                     <div class="media align-items-md-center">
                         <div class="media-body">
                             <div class="row align-items-md-center">
-                                <div class="col-9 col-md-4 col-lg-3 mb-2 mb-md-0">
+                                <div class="col-sm-12 col-md-2">
                                     <h4 class="mb-1">
                                         <a class="text-dark" href="#">{{ $device->name }}</a>
                                     </h4>
@@ -15,7 +15,7 @@
                                         <span>{{ $device->brand }}</span>
                                     </span>
                                 </div>
-                                <div class="col-sm mb-2 mb-sm-0">
+                                <div class="col-sm-12 col-md-auto">
                                     <h4 class="mb-1">
                                         <a class="text-dark" href="#">Appearnce</a>
                                     </h4>
@@ -24,7 +24,7 @@
                                         <span>{{ $device->appearance }}</span>
                                     </span>
                                 </div>
-                                <div class="col-sm mb-2 mb-sm-0">
+                                <div class="col-sm-12 col-md-auto">
                                     <h4 class="mb-1">
                                         <a class="text-dark" href="#">Functionality</a>
                                     </h4>
@@ -33,7 +33,7 @@
                                         <span>{{ $device->functionality }}</span>
                                     </span>
                                 </div>
-                                <div class="col-sm mb-2 mb-sm-0">
+                                <div class="col-sm-12 col-md-auto">
                                     <h4 class="mb-1">
                                         <a class="text-dark" href="#">Boxed </a>
                                     </h4>
@@ -42,7 +42,7 @@
                                         <span>{{ $device->boxed }}</span>
                                     </span>
                                 </div>
-                                <div class="col-sm mb-2 mb-sm-0">
+                                <div class="col-sm-12 col-md-auto">
                                     <h4 class="mb-1">
                                         <a class="text-dark" href="#">Color </a>
                                     </h4>
@@ -51,22 +51,7 @@
                                         <span>{{ $device->color }}</span>
                                     </span>
                                 </div>
-                                @php
-                                    $orderDetail = DB::table('orders')->find($device->order_id);
-                                @endphp
-                                @if ($orderDetail->status == 'Reserved')
-                                    <div class="col-sm mb-2 mb-sm-0">
-                                        <h4 class="mb-1">
-                                            <a class="text-dark" href="#">Offer Price</a>
-                                        </h4>
-                                        <span class="d-block">
-                                            <i class="tio-company mr-1"></i>
-                                            <span>{{ env('APP_CURRENCY') }}
-                                                {{ number_format($device->offer) }}</span>
-                                        </span>
-                                    </div>
-                                @endif
-                                <div class="col-sm mb-2 mb-sm-0">
+                                <div class="col-sm-12 col-md-auto">
                                     <h4 class="mb-1">
                                         <a class="text-dark" href="#">Price</a>
                                     </h4>
@@ -75,9 +60,38 @@
                                         <span>{{ env('APP_CURRENCY') }} {{ number_format($device->price) }}</span>
                                     </span>
                                 </div>
-                                <div class="col-sm-auto">
+                                {{-- checking if this User had already Offered --}}
+                                @php
+                                    $query = DB::table('offer_devices')
+                                        ->where('device_id', $device->id)
+                                        ->where('users_id', session('user')[0]->id)
+                                        ->get();
+                                @endphp
+                                @if (count($query) > 0)
+                                    <div class="col-sm-12 col-md-auto">
+                                        <h4 class="mb-1">
+                                            <a class="text-primary" href="#">Offer</a>
+                                        </h4>
+                                        <span class="d-block">
+                                            <i class="tio-company mr-1"></i>
+                                            <span>{{ env('APP_CURRENCY') }}
+                                                {{ number_format($query[0]->amount) }}</span>
+                                        </span>
+                                    </div>
+                                @else
+                                    <div class="col-sm-12 col-md-auto">
+                                        <h4 class="mb-1">
+                                            <a class="text-primary" href="#">Offer</a>
+                                        </h4>
+                                        <span class="d-block">
+                                            <i class="tio-company mr-1"></i>
+                                            <span>No Offer</span>
+                                        </span>
+                                    </div>
+                                @endif
+                                <div class="col-sm-12 col-md-auto">
                                     <a href="{{ route('deviceDestory', ['id' => $device->id]) }}"
-                                        class="btn btn-danger">Remove</a>
+                                        class="btn btn-danger ml-1">Remove</a>
                                 </div>
                             </div>
                         </div>
