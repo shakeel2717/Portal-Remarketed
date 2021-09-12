@@ -23,17 +23,17 @@ class OrderController extends Controller
 
         // inserting into database
         $task = new order();
-        if ($validated['offer'] != Null) {
-            // inserting offer price
-            $updateTask = new offerDevice();
-            $updateTask->orderNumber = $randNumber;
-            $updateTask->device_id = $validated['device_id'];
-            $updateTask->amount = $validated['offer'];
-            $updateTask->status = "Open";
-            $updateTask->save();
-            $task->status = "Reserved";
-            $task->type = "Offer";
-        }
+        // if ($validated['offer'] != Null) {
+        //     // inserting offer price
+        //     $updateTask = new offerDevice();
+        //     $updateTask->orderNumber = $randNumber;
+        //     $updateTask->device_id = $validated['device_id'];
+        //     $updateTask->amount = $validated['offer'];
+        //     $updateTask->status = "Open";
+        //     $updateTask->save();
+        //     $task->status = "Reserved";
+        //     $task->type = "Offer";
+        // }
 
         $task->name = $validated['orderName'];
         $task->users_id = session('user')[0]->id;
@@ -62,23 +62,23 @@ class OrderController extends Controller
 
         // checking if this Order belong to a non offer Order.
         $query = order::findOrFail($validated['orderId']);
-        if ($validated['offer'] != Null) {
-            if ($query->type != "Offer") {
-                return redirect()->back()->withErrors('Please Create new Order or Select Order who belong to Offers');
-            }
+        // if ($validated['offer'] != Null) {
+        //     // if ($query->type != "Offer") {
+        //     //     return redirect()->back()->withErrors('Please Create new Order or Select Order who belong to Offers');
+        //     // }
 
-            // inserting offer price
-            $updateTask = new offerDevice();
-            $updateTask->orderNumber = $query->orderNumber;
-            $updateTask->device_id = $validated['device_id'];
-            $updateTask->amount = $validated['offer'];
-            $updateTask->status = "Open";
-            $updateTask->save();
-        } else {
-            if ($query->type != "Direct") {
-                return redirect()->back()->withErrors('Please Create new Order or Select Order who not belong to Offers');
-            }
-        }
+        //     // inserting offer price
+        //     $updateTask = new offerDevice();
+        //     $updateTask->orderNumber = $query->orderNumber;
+        //     $updateTask->device_id = $validated['device_id'];
+        //     $updateTask->amount = $validated['offer'];
+        //     $updateTask->status = "Open";
+        //     $updateTask->save();
+        // } else {
+        //     if ($query->type != "Direct") {
+        //         return redirect()->back()->withErrors('Please Create new Order or Select Order who not belong to Offers');
+        //     }
+        // }
 
         // inserting Item Order
         $task = new itemOrder();

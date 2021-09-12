@@ -74,39 +74,6 @@
                                           <input type="hidden" name="device_id" id="device_id"
                                               value="{{ $device->id }}">
                                       </div>
-                                      <hr>
-                                      <p>We also Accpet offers on this Device</p>
-                                      <div class="accordion mb-4" id="accordionExample">
-                                          <div class="card" id="headingOne">
-                                              <a class="card-header card-btn btn-block" href="javascript:;"
-                                                  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                                                  aria-controls="collapseOne">
-                                                  Place Offer Bid
-
-                                                  <span class="card-btn-toggle">
-                                                      <span class="card-btn-toggle-default">
-                                                          <i class="tio-add"></i>
-                                                      </span>
-                                                      <span class="card-btn-toggle-active">
-                                                          <i class="tio-remove"></i>
-                                                      </span>
-                                                  </span>
-                                              </a>
-
-                                              <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-                                                  data-parent="#accordionExample">
-                                                  <div class="card-body">
-                                                      <div class="form-group">
-                                                          <label for="offer">Offer on This Device</label>
-                                                          <input type="text" name="offer" id="offer"
-                                                              class="form-control"
-                                                              placeholder="Amount you want to Offer">
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-
-                                      </div>
                                       <div class="form-group">
                                           <input type="submit" class="btn btn-primary btn-block" value="Submit">
                                       </div>
@@ -127,38 +94,6 @@
                                               placeholder="Order Name">
                                           <input type="hidden" name="device_id" id="device_id"
                                               value="{{ $device->id }}">
-                                      </div>
-                                      <hr>
-                                      <p>We also Accpet offers on this Device</p>
-                                      <div class="accordion mb-4" id="accordionExample">
-                                          <div class="card" id="headingOne">
-                                              <a class="card-header card-btn btn-block" href="javascript:;"
-                                                  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                                                  aria-controls="collapseOne">
-                                                  Place Offer Bid
-
-                                                  <span class="card-btn-toggle">
-                                                      <span class="card-btn-toggle-default">
-                                                          <i class="tio-add"></i>
-                                                      </span>
-                                                      <span class="card-btn-toggle-active">
-                                                          <i class="tio-remove"></i>
-                                                      </span>
-                                                  </span>
-                                              </a>
-
-                                              <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-                                                  data-parent="#accordionExample">
-                                                  <div class="card-body">
-                                                      <div class="form-group">
-                                                          <label for="offer">Offer on This Device</label>
-                                                          <input type="text" name="offer" id="offer"
-                                                              class="form-control" placeholder="Amount you want to Offer">
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-
                                       </div>
                                       <div class="form-group">
                                           <input type="submit" class="btn btn-primary btn-block" value="Submit">
