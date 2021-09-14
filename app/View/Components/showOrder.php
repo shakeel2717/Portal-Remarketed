@@ -7,16 +7,16 @@ use Illuminate\View\Component;
 class showOrder extends Component
 {
     public $allDevices;
-    public $order;
+    public $orders;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($allDevices,$order)
+    public function __construct($allDevices,$orders)
     {
         $this->allDevices = $allDevices;
-        $this->order = $order;
+        $this->orders = $orders;
     }
 
     /**

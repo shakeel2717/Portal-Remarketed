@@ -91,7 +91,21 @@
                                         </div>
                                     @endif
                                 </div>
-                                @if (count($query) > 0)
+                                <div class="content text-warning">
+                                    @if (count($query) > 0 && $query[0]->final != '')
+                                        <div class="col-sm-12 col-md-auto">
+                                            <h4 class="mb-1">
+                                                <a class="text-dark" href="#">Final Price</a>
+                                            </h4>
+                                            <span class="d-block">
+                                                <i class="tio-company mr-1"></i>
+                                                <span>{{ env('APP_CURRENCY') }}
+                                                    {{ number_format($query[0]->final) }}</span>
+                                            </span>
+                                        </div>
+                                    @endif
+                                </div>
+                                @if (count($query) > 0 && $query[0]->final == Null )
                                     <div class="content">
                                         <form action="{{ route('offerFinalPriceReq') }}" method="POST">
                                             @csrf

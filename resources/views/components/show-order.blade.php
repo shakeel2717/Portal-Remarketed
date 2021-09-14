@@ -105,7 +105,7 @@
                                         </div>
                                     @endif
                                 </div>
-                                @if (count($query) < 1)
+                                @if (count($query) < 1 && $orders->status == "Draft")
                                     <div class="content">
                                         <form action="{{ route('offerPriceReq') }}" method="POST">
                                             @csrf
@@ -116,7 +116,7 @@
                                                 <input type="hidden" name="device_id" id="device_id"
                                                     value="{{ $device->id }}">
                                                 <input type="hidden" name="orderId" id="orderId"
-                                                    value="{{ $order }}">
+                                                    value="{{ $orders->id }}">
                                                 <div class="input-group-append">
                                                     <button type="submit" class="js-clipboard btn btn-primary">
                                                         <i id="referralCodeIcon" class="tio-sort"></i>
@@ -127,10 +127,12 @@
                                         </form>
                                     </div>
                                 @endif
+                                @if ($orders->status == "Draft")
                                 <div class="content">
                                     <a href="{{ route('deviceDestory', ['id' => $device->id]) }}"
                                         class="btn btn-danger ml-1">Remove</a>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
