@@ -1,8 +1,14 @@
 <div class="row">
     <div class="col-12">
         @forelse ($allDevices as $device)
+            @php
+                $query = DB::table('offer_devices')
+                    ->where('device_id', $device->id)
+                    ->where('users_id', session('user')[0]->id)
+                    ->get();
+            @endphp
             <div class="col mb-3">
-                <div class="card card-body">
+                <div class="card card-body {{ count($query) > 0 && $query[0]->final != '' ? 'border-warning' : '' }}">
                     <div class="media align-items-md-center">
                         <div class="media-body">
                             <div class="row d-flex justify-content-around">
@@ -62,12 +68,6 @@
                                     </span>
                                 </div>
                                 <div class="content">
-                                    @php
-                                        $query = DB::table('offer_devices')
-                                            ->where('device_id', $device->id)
-                                            ->where('users_id', session('user')[0]->id)
-                                            ->get();
-                                    @endphp
                                     @if (count($query) > 0)
                                         <div class="col-sm-12 col-md-auto">
                                             <h4 class="mb-1">
@@ -91,26 +91,42 @@
                                         </div>
                                     @endif
                                 </div>
-                                <div class="content">
-                                    <form action="{{ route('offerPriceReq') }}" method="POST">
-                                        @csrf
-                                        <!-- Input Group -->
-                                        <div class="input-group w-75">
-                                            <input name="offer" type="text" class="form-control"
-                                                placeholder="Offer Eg:200">
-                                            <input type="hidden" name="device_id" id="device_id"
-                                                value="{{ $device->id }}">
-                                            <input type="hidden" name="orderId" id="orderId"
-                                                value="{{ $order }}">
-                                            <div class="input-group-append">
-                                                <button type="submit" class="js-clipboard btn btn-primary">
-                                                    <i id="referralCodeIcon" class="tio-sort"></i>
-                                                </button>
-                                            </div>
+                                <div class="content text-warning">
+                                    @if (count($query) > 0 && $query[0]->final != '')
+                                        <div class="col-sm-12 col-md-auto">
+                                            <h4 class="mb-1">
+                                                <a class="text-dark" href="#">Final Price</a>
+                                            </h4>
+                                            <span class="d-block">
+                                                <i class="tio-company mr-1"></i>
+                                                <span>{{ env('APP_CURRENCY') }}
+                                                    {{ number_format($query[0]->final) }}</span>
+                                            </span>
                                         </div>
-                                        <!-- End Input Group -->
-                                    </form>
+                                    @endif
                                 </div>
+                                @if (count($query) < 1)
+                                    <div class="content">
+                                        <form action="{{ route('offerPriceReq') }}" method="POST">
+                                            @csrf
+                                            <!-- Input Group -->
+                                            <div class="input-group w-75">
+                                                <input name="offer" type="text" class="form-control"
+                                                    placeholder="Offer Eg:200">
+                                                <input type="hidden" name="device_id" id="device_id"
+                                                    value="{{ $device->id }}">
+                                                <input type="hidden" name="orderId" id="orderId"
+                                                    value="{{ $order }}">
+                                                <div class="input-group-append">
+                                                    <button type="submit" class="js-clipboard btn btn-primary">
+                                                        <i id="referralCodeIcon" class="tio-sort"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- End Input Group -->
+                                        </form>
+                                    </div>
+                                @endif
                                 <div class="content">
                                     <a href="{{ route('deviceDestory', ['id' => $device->id]) }}"
                                         class="btn btn-danger ml-1">Remove</a>
