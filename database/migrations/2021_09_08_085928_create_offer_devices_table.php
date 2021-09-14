@@ -20,6 +20,7 @@ class CreateOfferDevicesTable extends Migration
             $table->string('orderNumber');
             $table->string('amount');
             $table->string('status')->default("Open");
+            $table->string('final')->nullable();
             $table->timestamps();
         });
     }

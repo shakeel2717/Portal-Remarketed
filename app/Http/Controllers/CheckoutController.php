@@ -113,7 +113,7 @@ class CheckoutController extends Controller
         $task->device_id = $validated['device_id'];
         $task->amount = $validated['offer'];
         $task->save();
-        return redirect()->back()->with('message', 'Your Offer Request is now Under Review');
+        return redirect()->back()->with('message', 'Success');
 
     }
 }

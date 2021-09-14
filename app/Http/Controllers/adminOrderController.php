@@ -66,7 +66,7 @@ class adminOrderController extends Controller
 
     public function allOfferOrders()
     {
-        $query = order::where('status' , "Quote")->get();
+        $query = order::where('status', "Quote")->get();
         return view('admin.dashboard.orders.allOfferOrders', [
             'orderDetail' => $query,
         ]);
@@ -116,5 +116,20 @@ class adminOrderController extends Controller
         return view('admin.dashboard.orders.orderRequest', [
             'orderDetail' => $query,
         ]);
+    }
+
+
+    public function offerFinalPriceReq(Request $request)
+    {
+        $validated = $request->validate([
+            'offer' => 'required|string',
+            'offerId' => 'required|string',
+        ]);
+        // inserting this Order into Database
+        $task = offerDevice::find($validated['offerId']);
+        $task->final = $validated['offer'];
+        $task->status = "Alert";
+        $task->save();
+        return redirect()->back()->with('message', 'Success');
     }
 }

@@ -157,6 +157,6 @@ class OrderController extends Controller
         $updateTask->amount = $validated['offer'];
         $updateTask->status = "Open";
         $updateTask->save();
-        return redirect()->back()->with('message', 'Your Custom Offer Request in Under Review');
+        return redirect()->back()->with('message', 'Success');
     }
 }
