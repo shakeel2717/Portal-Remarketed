@@ -78,13 +78,20 @@ class adminOrderController extends Controller
         // accpeting this Order
         // getting all Item Orders in this Order
         $itemOrders = itemOrder::where('order_id', $id->id)->get();
+        // return $itemOrders;
         foreach ($itemOrders as $itemOrder) {
+            // checking if this is a not a Offered Order
+            $offeredQuery = offerDevice::where('orderNumber', $itemOrder->id)->get();
+            if (count($offeredQuery) < 1) {
+                goto skipPriceChange;
+            }
             // getting offer Price for this device
             $offerDevice = offerDevice::where('device_id', $itemOrder->devices_id)->first();
             // updating this Device Price
             $device = device::find($itemOrder->devices_id);
             $device->price = $offerDevice->amount;
             $device->save();
+            skipPriceChange:
         }
         // updating this Order Status
         $order = order::find($id->id);
@@ -131,5 +138,14 @@ class adminOrderController extends Controller
         $task->status = "Alert";
         $task->save();
         return redirect()->back()->with('message', 'Success');
+    }
+    
+    public function finalacceptReq($id)
+    {
+        $query = offerDevice::find($id);
+        $query->amount = $query->final;
+        $query->status = "Accpet";
+        $query->save();
+        return redirect()->back()->with('message', 'Final Price Accepted!');
     }
 }

@@ -91,8 +91,8 @@
                                         </div>
                                     @endif
                                 </div>
-                                <div class="content text-warning">
-                                    @if (count($query) > 0 && $query[0]->final != '')
+                                @if (count($query) > 0 && $query[0]->final != '')
+                                    <div class="content text-warning">
                                         <div class="col-sm-12 col-md-auto">
                                             <h4 class="mb-1">
                                                 <a class="text-dark" href="#">Final Price</a>
@@ -101,11 +101,15 @@
                                                 <i class="tio-company mr-1"></i>
                                                 <span>{{ env('APP_CURRENCY') }}
                                                     {{ number_format($query[0]->final) }}</span>
+                                                @if ($query[0]->final != $query[0]->amount)
+                                                    <a href="{{ route('finalacceptReq', ['id' => $query[0]->id]) }}"
+                                                        class="btn btn-xs btn-primary">Accept</a>
+                                                @endif
                                             </span>
                                         </div>
-                                    @endif
-                                </div>
-                                @if (count($query) < 1 && $orders->status == "Draft")
+                                    </div>
+                                @endif
+                                @if (count($query) < 1 && $orders->status == 'Draft')
                                     <div class="content">
                                         <form action="{{ route('offerPriceReq') }}" method="POST">
                                             @csrf
@@ -127,11 +131,11 @@
                                         </form>
                                     </div>
                                 @endif
-                                @if ($orders->status == "Draft")
-                                <div class="content">
-                                    <a href="{{ route('deviceDestory', ['id' => $device->id]) }}"
-                                        class="btn btn-danger ml-1">Remove</a>
-                                </div>
+                                @if ($orders->status == 'Draft')
+                                    <div class="content">
+                                        <a href="{{ route('deviceDestory', ['id' => $device->id]) }}"
+                                            class="btn btn-danger ml-1">Remove</a>
+                                    </div>
                                 @endif
                             </div>
                         </div>

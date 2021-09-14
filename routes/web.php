@@ -121,6 +121,8 @@ Route::prefix('admin/dashboard')->middleware(['admin'])->group(function () {
     Route::get('/orders-request', [adminOrderController::class, 'orderRequest'])->name('orderRequest');
     Route::post('/orders-request', [adminOrderController::class, 'orderStatusRequest'])->name('orderStatusRequest');
     Route::post('/orders-final-request', [adminOrderController::class, 'offerFinalPriceReq'])->name('offerFinalPriceReq');
+    Route::get('/orders-final/{id?}', [adminOrderController::class, 'finalacceptReq'])->name('finalacceptReq');
+    
     
 
 });
