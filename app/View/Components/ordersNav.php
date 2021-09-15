@@ -7,10 +7,10 @@ use Illuminate\View\Component;
 
 class ordersNav extends Component
 {
-    // public $draft;
-    // public $quote;
-    // public $reserved;
-    // public $shipped;
+    public $draft;
+    public $quote;
+    public $reserved;
+    public $shipped;
     /**
      * Create a new component instance.
      *
