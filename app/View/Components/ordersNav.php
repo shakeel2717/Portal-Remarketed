@@ -7,10 +7,10 @@ use Illuminate\View\Component;
 
 class ordersNav extends Component
 {
-    public $draft;
-    public $quote;
-    public $reserved;
-    public $shipped;
+    // public $draft;
+    // public $quote;
+    // public $reserved;
+    // public $shipped;
     /**
      * Create a new component instance.
      *
@@ -18,14 +18,6 @@ class ordersNav extends Component
      */
     public function __construct()
     {
-        $draft = order::where('status', 'Draft')->where('users_id', session('user')[0]->id)->count();
-        $quote = order::where('status', 'Quote')->where('users_id', session('user')[0]->id)->count();
-        $reserved = order::where('status', 'Reserved')->where('users_id', session('user')[0]->id)->count();
-        $shipped = order::where('status', 'Shipped')->where('users_id', session('user')[0]->id)->count();
-        $this->draft = $draft;
-        $this->quote = $quote;
-        $this->reserved = $reserved;
-        $this->shipped = $shipped;
     }
 
     /**
@@ -35,6 +27,19 @@ class ordersNav extends Component
      */
     public function render()
     {
-        return view('components.orders-nav');
+        $draft = order::where('status', 'Draft')->where('users_id', session('user')[0]->id)->count();
+        $quote = order::where('status', 'Quote')->where('users_id', session('user')[0]->id)->count();
+        $reserved = order::where('status', 'Reserved')->where('users_id', session('user')[0]->id)->count();
+        $shipped = order::where('status', 'Shipped')->where('users_id', session('user')[0]->id)->count();
+        $this->draft = $draft;
+        $this->quote = $quote;
+        $this->reserved = $reserved;
+        $this->shipped = $shipped;
+        return view('components.orders-nav', [
+            'draft' => $draft,
+            'quote' => $quote,
+            'reserved' => $reserved,
+            'shipped' => $shipped,
+        ]);
     }
 }
