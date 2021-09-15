@@ -239,6 +239,20 @@
                                                         </div>
                                                     </div>
                                                 </a>
+                                                <a class="nav-link" href="{{ route('address.index') }}">
+                                                    <div class="media align-items-center">
+                                                        <span class="mr-3">
+                                                            <img class="avatar avatar-xs"
+                                                                src="{{ asset('assets/svg/brands/atlassian.svg') }}"
+                                                                alt="Image Description">
+                                                        </span>
+                                                        <div class="media-body text-truncate">
+                                                            <span class="h5 mb-0">Addresses</span>
+                                                            <span class="d-block font-size-sm text-body">Check all
+                                                                Address or Add new one</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
                                             </div>
                                             <!-- End Nav -->
                                         </div>
