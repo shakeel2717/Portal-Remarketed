@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\checkout;
+use App\Models\notification;
 use App\Models\offerDevice;
 use App\Models\order;
 use Illuminate\Http\Request;
@@ -42,6 +43,14 @@ class CheckoutController extends Controller
             'address' => 'required|integer',
             'comment' => 'required|string|nullable',
         ]);
+
+        // inserting new Notification
+        $task = new notification();
+        $task->users_id = session('user')[0]->id;
+        $task->title = "Order Reqeust in Review";
+        $username = session('user')[0]->username;
+        $task->value = "Dear $username  Your Order Request are successfully submitted and currently under review, you will get notify once your Request Approved";
+        $task->save();
 
         $task = new checkout();
         $task->orders_id = $request->input('orders_id');

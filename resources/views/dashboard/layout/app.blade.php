@@ -167,23 +167,65 @@
                                                 <div class="tab-pane fade show active" id="notificationNavOne"
                                                     role="tabpanel" aria-labelledby="notificationNavOne-tab">
                                                     <ul class="list-group list-group-flush navbar-card-list-group">
-                                                        <li class="list-group-item custom-checkbox-list-wrapper">
-                                                            <div class="row">
-                                                                <div class="col-auto position-static">
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="tio-lg">
-                                                                            <i class="tio">filter_list</i>
+                                                        @php
+                                                            // getting notifications list
+                                                            $notifications = DB::table('notifications')
+                                                                ->where('users_id', session('user')[0]->id)
+                                                                ->take(5)
+                                                                ->latest()
+                                                                ->get();
+                                                        @endphp
+                                                        @forelse ($notifications as $notification)
+                                                            <li class="list-group-item custom-checkbox-list-wrapper">
+                                                                <div class="row">
+                                                                    <div class="col-auto position-static">
+                                                                        <div class="d-flex align-items-center">
+                                                                            <div
+                                                                                class="custom-control custom-checkbox custom-checkbox-list">
+                                                                                <input type="checkbox"
+                                                                                    class="custom-control-input"
+                                                                                    id="notificationCheck4"
+                                                                                    {{ $notification->read == false ? 'checked=' : '' }}>
+                                                                                <label class="custom-control-label"
+                                                                                    for="notificationCheck4"></label>
+                                                                                <span
+                                                                                    class="custom-checkbox-list-stretched-bg"></span>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
+                                                                    <div class="col ml-n3">
+                                                                        <span
+                                                                            class="card-title h5">{{ mb_strimwidth($notification->title, 0, 25, '...') }}</span>
+                                                                        <p class="card-text font-size-sm">
+                                                                            {{ mb_strimwidth($notification->value, 0, 60, '...') }}
+                                                                        </p>
+                                                                    </div>
+                                                                    <small
+                                                                        class="col-auto text-muted text-cap">{{ \Carbon\Carbon::createFromTimeStamp(strtotime($notification->created_at))->diffForHumans() }}</small>
                                                                 </div>
-                                                                <div class="col ml-n3">
-                                                                    <p class="card-text font-size-sm">There are no new
-                                                                        messages.
-                                                                        You're all caught up!</p>
+                                                                <a class="stretched-link" href="#"></a>
+                                                            </li>
+                                                        @empty
+                                                            <li class="list-group-item custom-checkbox-list-wrapper">
+                                                                <div class="row">
+                                                                    <div class="col-auto position-static">
+                                                                        <div class="d-flex align-items-center">
+                                                                            <div class="tio-lg">
+                                                                                <i
+                                                                                    class="tio">filter_list</i>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col ml-n3">
+                                                                        <p class="card-text font-size-sm">There are no
+                                                                            new
+                                                                            Notification.
+                                                                            You're all caught up!</p>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <a class="stretched-link" href="#"></a>
-                                                        </li>
+                                                                <a class="stretched-link" href="#"></a>
+                                                            </li>
+                                                        @endforelse
                                                     </ul>
                                                 </div>
                                             </div>
