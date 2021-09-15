@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\address;
 use App\Models\device;
 use App\Models\itemOrder;
+use App\Models\notification;
 use App\Models\offerDevice;
 use App\Models\order;
 use Illuminate\Http\Request;
@@ -97,6 +98,14 @@ class adminOrderController extends Controller
         $order = order::find($id->id);
         $order->status = "Shipped";
         $order->save();
+
+        // inserting new Notification
+        $task = new notification();
+        $task->users_id = $itemOrders[0]->users_id;
+        $task->title = "Order Reqeust Successfully Shipped.";
+        $username = session('user')[0]->username;
+        $task->value = "Dear $username  Your Order Request are successfully Shipped to your selected Shipping Address, feel free to contact Support Team 7/24 in Support Section, or contact us on our Support Email.";
+        $task->save();
         return redirect()->back()->with('message', 'Offer Accepted, All Devices Price Changed');
     }
 
